@@ -38,8 +38,10 @@ command to run if program contains helper info
 
 Contributors names and contact info
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+1- Ahmed Torki
+2- Alexia Leon Lopez
+3- Jonathan	Ramirez-Fausto
+4- Rull Mendez
 
 ## Version History
 
