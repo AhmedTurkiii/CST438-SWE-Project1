@@ -12,7 +12,6 @@ export default function HomeScreen() {
     Linking.openURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ'); 
   };
 
-
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
