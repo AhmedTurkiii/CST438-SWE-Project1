@@ -7,8 +7,11 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 Contributors names and contact info
 
 1- Ahmed Torki
+
 2- Alexia Leon Lopez
+
 3- Jonathan	Ramirez-Fausto
+
 4- Rull Mendez
 
 ## Get started
