@@ -1,65 +1,50 @@
-# CST438-SWE-Project1
-# Project Title
+# Welcome to your Expo app 👋
 
-Simple overview of use/purpose.
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## Description
+## Get started
 
-An in-depth paragraph about your project and overview of use.
+1. Install dependencies
 
-## Getting Started
+   ```bash
+   npm install
+   ```
 
-### Dependencies
+2. Start the app
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+   ```bash
+    npx expo start
+   ```
 
-### Installing
+In the output, you'll find options to open the app in a
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
+- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
+- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-### Executing program
+You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-* How to run the program
-* Step-by-step bullets
+## Get a fresh project
+
+When you're ready, run:
+
+```bash
+npm run reset-project
 ```
-code blocks for commands
-```
 
-## Help
+This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+## Learn more
 
-## Authors
+To learn more about developing your project with Expo, look at the following resources:
 
-Contributors names and contact info
+- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
+- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
 
-1- Ahmed Torki
-2- Alexia Leon Lopez
-3- Jonathan	Ramirez-Fausto
-4- Rull Mendez
+## Join the community
 
-## Version History
+Join our community of developers creating universal apps.
 
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-
-## Acknowledgments
-
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
+- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
