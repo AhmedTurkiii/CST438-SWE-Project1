@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   quoteContainer: {
     marginTop: 16,
     padding: 16,
-    backgroundColor: 'black',
+    backgroundColor: '#A1CEDC',
     borderRadius: 8
   }
 });
