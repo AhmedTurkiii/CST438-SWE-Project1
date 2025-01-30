@@ -1,4 +1,5 @@
 import { Image, StyleSheet, Platform, TouchableOpacity, Linking } from 'react-native';
+
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
