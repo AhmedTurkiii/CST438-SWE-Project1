@@ -1,4 +1,5 @@
 import { Image, StyleSheet, Platform, TouchableOpacity, Linking } from 'react-native';
+
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -11,7 +12,6 @@ export default function HomeScreen() {
   const quoteButton2 = () => {
     Linking.openURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ'); 
   };
-
 
   return (
     <ParallaxScrollView
