@@ -39,7 +39,7 @@ export default function FavoriteQuotes() {
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
         <Image
-          source={require('@/assets/images/Designer-2.jpeg')}
+          source={require('@/assets/images/QuoteLingo_Logo.jpeg')}
           style={styles.reactLogo}
         />
       }>
