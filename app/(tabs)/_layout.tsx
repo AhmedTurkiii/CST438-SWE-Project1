@@ -62,13 +62,13 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <AntDesign name="heart" size={28} color={color}/>,
         }}
       />
-      {/* <Tabs.Screen
-        name="explore"
+      <Tabs.Screen
+        name="index"
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
         }}
-      /> */}
+      />
       <Tabs.Screen
         name="favorite"
         options={{
@@ -76,7 +76,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <AntDesign name="heart" size={28} color={color}/>,
         }}
         />
-              <Tabs.Screen
+      <Tabs.Screen
         name="history"
         options={{
           title: 'History',
