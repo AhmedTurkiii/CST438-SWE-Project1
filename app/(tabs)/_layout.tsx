@@ -1,6 +1,7 @@
 import { Redirect, Tabs } from 'expo-router';
 import React, { useState, useEffect } from 'react';
 import { Platform } from 'react-native';
+import { createTables } from '@/src/db/statements';
 
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
@@ -15,6 +16,7 @@ export default function TabLayout() {
   const [isAuthenticated, setIsAuthenticated] = useState <boolean | null>(null);
 
   useEffect(() => {
+    createTables(); 
     const checkAuthStatus = async () => {
       try {
         const authStatus = await AsyncStorage.getItem('isAuthenticated');
@@ -56,14 +58,14 @@ export default function TabLayout() {
       >
 
       <Tabs.Screen
-        name="login"
+        name="index"
         options={{
           title: 'Login',
-          tabBarIcon: ({ color }) => <AntDesign name="heart" size={28} color={color}/>,
+          headerShown: false,
         }}
       />
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,

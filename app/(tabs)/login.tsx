@@ -1,34 +1,51 @@
-//login page: 
-import { Image, StyleSheet, Platform, ActivityIndicator, View, Text, TextInput, Button, Alert, } from 'react-native';
-import axios from 'axios';
+import { Image, StyleSheet, TextInput, Button, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { HelloWave } from '@/components/HelloWave';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { useEffect, useState } from 'react';
-
+import { useState } from 'react';
+import { db } from '@/src/db/statements';
+import bcrypt from 'bcryptjs';
+import { Transaction } from 'better-sqlite3';
 
 export default function LoginScreen() {
   const router = useRouter();
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
-    const userLogin = async () => {
-        if (username === "test" && password === "123") {
-          try {
-            await AsyncStorage.setItem('isAuthenticated', 'true');
-            router.replace('/(tabs)');
-          } catch(error) {
-            console.error("Failed to save authentication", error)
-          }
-        }else {
-            alert('Invalid credentials');
-          }
+  const userLogin = async () => {
+    if (!username || !password) {
+        Alert.alert('Error', 'Please enter both username and password.');
+        return;
+    }
 
+    db.transaction(tx => {
+        tx.executeSql(
+            'SELECT password FROM users WHERE username = ?;',
+            [username],
+            (_, { rows }) => {
+                if (rows.length > 0) {
+                    const storedHashedPassword = rows.item(0).password;
 
-    };
+                    if (bcrypt.compareSync(password, storedHashedPassword)) {
+                        AsyncStorage.setItem('isAuthenticated', 'true');
+                        router.replace('/(tabs)'); // Navigate to tabs after successful login
+                    } else {
+                        Alert.alert('Error', 'Invalid username or password.');
+                    }
+                } else {
+                    Alert.alert('Error', 'User not found.');
+                }
+            },
+            (_, error) => {
+                console.error('Error checking user:', error);
+                Alert.alert('Error', 'An error occurred while logging in.');
+            }
+        );
+    });
+  };
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -55,7 +72,7 @@ export default function LoginScreen() {
             style={styles.input}
             secureTextEntry
         />
-        <Button title='Login!' onPress={userLogin}/>
+        <Button title='Login!' onPress={userLogin} />
       </ThemedView>
     </ParallaxScrollView>
   );
@@ -78,7 +95,6 @@ const styles = StyleSheet.create({
     left: 0,
     position: 'absolute',
   },
-
   input: {
     height: 40,
     borderColor: '#ccc',
