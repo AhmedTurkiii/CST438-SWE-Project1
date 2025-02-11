@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="81087c05-8da6-416f-9d43-1454d7567cc8" name="Changes" comment="Login and registration finished" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+        <option value="CSS File" />
+        <option value="TypeScript File" />
+        <option value="Less File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Rull_branch" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Shiro219&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/AhmedTurkiii/CST438-SWE-Project1.git&quot;,
+    &quot;accountId&quot;: &quot;16c482b9-a096-45b4-8446-d3e601d8266a&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2sKkqaWmKfOLCfXOlcONh4kGxLz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "last_opened_file_path": "C:/Users/rulla/WebstormProjects/CST438-SWE-Project1",
+    "list.type.of.created.stylesheet": "Less",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\rulla\\WebstormProjects\\CST438-SWE-Project1\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\assets\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\app\(tabs)" />
+      <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\app" />
+      <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\app\Login" />
+      <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\components" />
+      <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\assets\images" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.157" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="81087c05-8da6-416f-9d43-1454d7567cc8" name="Changes" comment="" />
+      <created>1738211845280</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1738211845280</updated>
+      <workItem from="1738211846409" duration="103000" />
+      <workItem from="1738211971336" duration="3421000" />
+      <workItem from="1738215477569" duration="5243000" />
+      <workItem from="1738221789207" duration="420000" />
+      <workItem from="1738270936434" duration="6559000" />
+      <workItem from="1738278665137" duration="1294000" />
+      <workItem from="1738382065879" duration="24990000" />
+      <workItem from="1738407327401" duration="203000" />
+      <workItem from="1738561791332" duration="12595000" />
+      <workItem from="1738618021042" duration="1168000" />
+      <workItem from="1738619216240" duration="1541000" />
+      <workItem from="1738709700761" duration="2164000" />
+      <workItem from="1738713783759" duration="184000" />
+      <workItem from="1738817078429" duration="507000" />
+      <workItem from="1738817726622" duration="198000" />
+      <workItem from="1738817949732" duration="1096000" />
+      <workItem from="1738879102849" duration="991000" />
+      <workItem from="1738880524369" duration="175000" />
+      <workItem from="1738880713511" duration="64000" />
+      <workItem from="1738880786216" duration="371000" />
+    </task>
+    <task id="LOCAL-00001" summary="Here is some part of the signup and login in page">
+      <option name="closed" value="true" />
+      <created>1738219912591</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1738219912592</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Here is some part of the signup and login in page">
+      <option name="closed" value="true" />
+      <created>1738219918916</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1738219918916</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Here is some part of the signup and login in page">
+      <option name="closed" value="true" />
+      <created>1738220749880</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1738220749880</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Login page fixed">
+      <option name="closed" value="true" />
+      <created>1738279136105</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1738279136105</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Login and registration finished">
+      <option name="closed" value="true" />
+      <created>1738407235503</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1738407235503</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Login and registration finished">
+      <option name="closed" value="true" />
+      <created>1738407383758</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1738407383758</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Login and registration finished">
+      <option name="closed" value="true" />
+      <created>1738620149963</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1738620149963</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Login and registration finished">
+      <option name="closed" value="true" />
+      <created>1738620284845</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1738620284845</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Here is some part of the signup and login in page" />
+    <MESSAGE value="Login page fixed" />
+    <MESSAGE value="Login and registration finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login and registration finished" />
+  </component>
+</project>

@@ -1,0 +1,82 @@
+Index: package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n  \"name\": \"quotelingo\",\r\n  \"main\": \"expo-router/entry\",\r\n  \"version\": \"1.0.0\",\r\n  \"scripts\": {\r\n    \"start\": \"expo start\",\r\n    \"reset-project\": \"node ./scripts/reset-project.js\",\r\n    \"android\": \"expo start --android\",\r\n    \"ios\": \"expo start --ios\",\r\n    \"web\": \"expo start --web\",\r\n    \"test\": \"jest --watchAll\",\r\n    \"lint\": \"expo lint\"\r\n  },\r\n  \"jest\": {\r\n    \"preset\": \"jest-expo\"\r\n  },\r\n  \"dependencies\": {\r\n    \"@expo/vector-icons\": \"^14.0.2\",\r\n    \"@react-navigation/bottom-tabs\": \"^7.2.0\",\r\n    \"@react-navigation/native\": \"^7.0.14\",\r\n    \"expo\": \"~52.0.28\",\r\n    \"expo-blur\": \"~14.0.3\",\r\n    \"expo-constants\": \"~17.0.5\",\r\n    \"expo-font\": \"~13.0.3\",\r\n    \"expo-haptics\": \"~14.0.1\",\r\n    \"expo-linking\": \"~7.0.5\",\r\n    \"expo-router\": \"~4.0.17\",\r\n    \"expo-splash-screen\": \"~0.29.21\",\r\n    \"expo-status-bar\": \"~2.0.1\",\r\n    \"expo-symbols\": \"~0.2.1\",\r\n    \"expo-system-ui\": \"~4.0.7\",\r\n    \"expo-web-browser\": \"~14.0.2\",\r\n    \"react\": \"18.3.1\",\r\n    \"react-dom\": \"18.3.1\",\r\n    \"react-native\": \"0.76.6\",\r\n    \"react-native-gesture-handler\": \"~2.20.2\",\r\n    \"react-native-reanimated\": \"~3.16.1\",\r\n    \"react-native-safe-area-context\": \"4.12.0\",\r\n    \"react-native-screens\": \"~4.4.0\",\r\n    \"react-native-web\": \"~0.19.13\",\r\n    \"react-native-webview\": \"13.12.5\"\r\n  },\r\n  \"devDependencies\": {\r\n    \"@babel/core\": \"^7.25.2\",\r\n    \"@types/jest\": \"^29.5.12\",\r\n    \"@types/react\": \"~18.3.12\",\r\n    \"@types/react-test-renderer\": \"^18.3.0\",\r\n    \"jest\": \"^29.2.1\",\r\n    \"jest-expo\": \"~52.0.3\",\r\n    \"react-test-renderer\": \"18.3.1\",\r\n    \"typescript\": \"^5.3.3\"\r\n  },\r\n  \"private\": true\r\n}\r\n
+===================================================================
+diff --git a/package.json b/package.json
+--- a/package.json	(revision dc6ee96062101664eaf9e31e34605b90d106b4c1)
++++ b/package.json	(date 1738210829905)
+@@ -44,6 +44,7 @@
+     "@babel/core": "^7.25.2",
+     "@types/jest": "^29.5.12",
+     "@types/react": "~18.3.12",
++    "@types/react-native": "^0.72.8",
+     "@types/react-test-renderer": "^18.3.0",
+     "jest": "^29.2.1",
+     "jest-expo": "~52.0.3",
+Index: package-lock.json
+===================================================================
+diff --git a/package-lock.json b/package-lock.json
+--- a/package-lock.json	(revision dc6ee96062101664eaf9e31e34605b90d106b4c1)
++++ b/package-lock.json	(date 1738210830254)
+@@ -37,6 +37,7 @@
+         "@babel/core": "^7.25.2",
+         "@types/jest": "^29.5.12",
+         "@types/react": "~18.3.12",
++        "@types/react-native": "^0.72.8",
+         "@types/react-test-renderer": "^18.3.0",
+         "jest": "^29.2.1",
+         "jest-expo": "~52.0.3",
+@@ -4352,6 +4353,31 @@
+         "csstype": "^3.0.2"
+       }
+     },
++    "node_modules/@types/react-native": {
++      "version": "0.72.8",
++      "resolved": "https://registry.npmjs.org/@types/react-native/-/react-native-0.72.8.tgz",
++      "integrity": "sha512-St6xA7+EoHN5mEYfdWnfYt0e8u6k2FR0P9s2arYgakQGFgU1f9FlPrIEcj0X24pLCF5c5i3WVuLCUdiCYHmOoA==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "@react-native/virtualized-lists": "^0.72.4",
++        "@types/react": "*"
++      }
++    },
++    "node_modules/@types/react-native/node_modules/@react-native/virtualized-lists": {
++      "version": "0.72.8",
++      "resolved": "https://registry.npmjs.org/@react-native/virtualized-lists/-/virtualized-lists-0.72.8.tgz",
++      "integrity": "sha512-J3Q4Bkuo99k7mu+jPS9gSUSgq+lLRSI/+ahXNwV92XgJ/8UgOTxu2LPwhJnBk/sQKxq7E8WkZBnBiozukQMqrw==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "invariant": "^2.2.4",
++        "nullthrows": "^1.1.1"
++      },
++      "peerDependencies": {
++        "react-native": "*"
++      }
++    },
+     "node_modules/@types/react-test-renderer": {
+       "version": "18.3.1",
+       "resolved": "https://registry.npmjs.org/@types/react-test-renderer/-/react-test-renderer-18.3.1.tgz",
+Index: .expo/types/router.d.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/* eslint-disable */\r\nimport * as Router from 'expo-router';\r\n\r\nexport * from 'expo-router';\r\n\r\ndeclare module 'expo-router' {\r\n  export namespace ExpoRouter {\r\n    export interface __routes<T extends string | object = string> {\r\n      hrefInputParams: { pathname: Router.RelativePathString, params?: Router.UnknownInputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownInputParams } | { pathname: `/_sitemap`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/history` | `/history`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}` | `/`; params?: Router.UnknownInputParams; } | { pathname: `/+not-found`, params: Router.UnknownInputParams & {  } };\r\n      hrefOutputParams: { pathname: Router.RelativePathString, params?: Router.UnknownOutputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownOutputParams } | { pathname: `/_sitemap`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}/history` | `/history`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}` | `/`; params?: Router.UnknownOutputParams; } | { pathname: `/+not-found`, params: Router.UnknownOutputParams & {  } };\r\n      href: Router.RelativePathString | Router.ExternalPathString | `/_sitemap${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}/history${`?${string}` | `#${string}` | ''}` | `/history${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}${`?${string}` | `#${string}` | ''}` | `/${`?${string}` | `#${string}` | ''}` | { pathname: Router.RelativePathString, params?: Router.UnknownInputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownInputParams } | { pathname: `/_sitemap`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/history` | `/history`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}` | `/`; params?: Router.UnknownInputParams; } | `/+not-found` | { pathname: `/+not-found`, params: Router.UnknownInputParams & {  } };\r\n    }\r\n  }\r\n}\r\n
+===================================================================
+diff --git a/.expo/types/router.d.ts b/.expo/types/router.d.ts
+--- a/.expo/types/router.d.ts	(revision dc6ee96062101664eaf9e31e34605b90d106b4c1)
++++ b/.expo/types/router.d.ts	(date 1738210852696)
+@@ -6,9 +6,9 @@
+ declare module 'expo-router' {
+   export namespace ExpoRouter {
+     export interface __routes<T extends string | object = string> {
+-      hrefInputParams: { pathname: Router.RelativePathString, params?: Router.UnknownInputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownInputParams } | { pathname: `/_sitemap`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/history` | `/history`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}` | `/`; params?: Router.UnknownInputParams; } | { pathname: `/+not-found`, params: Router.UnknownInputParams & {  } };
+-      hrefOutputParams: { pathname: Router.RelativePathString, params?: Router.UnknownOutputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownOutputParams } | { pathname: `/_sitemap`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}/history` | `/history`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}` | `/`; params?: Router.UnknownOutputParams; } | { pathname: `/+not-found`, params: Router.UnknownOutputParams & {  } };
+-      href: Router.RelativePathString | Router.ExternalPathString | `/_sitemap${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}/history${`?${string}` | `#${string}` | ''}` | `/history${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}${`?${string}` | `#${string}` | ''}` | `/${`?${string}` | `#${string}` | ''}` | { pathname: Router.RelativePathString, params?: Router.UnknownInputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownInputParams } | { pathname: `/_sitemap`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/history` | `/history`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}` | `/`; params?: Router.UnknownInputParams; } | `/+not-found` | { pathname: `/+not-found`, params: Router.UnknownInputParams & {  } };
++      hrefInputParams: { pathname: Router.RelativePathString, params?: Router.UnknownInputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownInputParams } | { pathname: `/_sitemap`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/explore` | `/explore`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/history` | `/history`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}` | `/`; params?: Router.UnknownInputParams; } | { pathname: `/+not-found`, params: Router.UnknownInputParams & {  } };
++      hrefOutputParams: { pathname: Router.RelativePathString, params?: Router.UnknownOutputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownOutputParams } | { pathname: `/_sitemap`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}/explore` | `/explore`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}/history` | `/history`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}` | `/`; params?: Router.UnknownOutputParams; } | { pathname: `/+not-found`, params: Router.UnknownOutputParams & {  } };
++      href: Router.RelativePathString | Router.ExternalPathString | `/_sitemap${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}/explore${`?${string}` | `#${string}` | ''}` | `/explore${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}/history${`?${string}` | `#${string}` | ''}` | `/history${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}${`?${string}` | `#${string}` | ''}` | `/${`?${string}` | `#${string}` | ''}` | { pathname: Router.RelativePathString, params?: Router.UnknownInputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownInputParams } | { pathname: `/_sitemap`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/explore` | `/explore`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/history` | `/history`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}` | `/`; params?: Router.UnknownInputParams; } | `/+not-found` | { pathname: `/+not-found`, params: Router.UnknownInputParams & {  } };
+     }
+   }
+ }

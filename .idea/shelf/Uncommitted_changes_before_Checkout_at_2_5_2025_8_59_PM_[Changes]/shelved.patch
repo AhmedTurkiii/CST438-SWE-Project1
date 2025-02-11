@@ -1,0 +1,204 @@
+Index: .expo/types/router.d.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/* eslint-disable */\r\nimport * as Router from 'expo-router';\r\n\r\nexport * from 'expo-router';\r\n\r\ndeclare module 'expo-router' {\r\n  export namespace ExpoRouter {\r\n    export interface __routes<T extends string | object = string> {\r\n      hrefInputParams: { pathname: Router.RelativePathString, params?: Router.UnknownInputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownInputParams } | { pathname: `/_sitemap`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/explore` | `/explore`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/favorite` | `/favorite`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/history` | `/history`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}` | `/`; params?: Router.UnknownInputParams; } | { pathname: `/+not-found`, params: Router.UnknownInputParams & {  } };\r\n      hrefOutputParams: { pathname: Router.RelativePathString, params?: Router.UnknownOutputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownOutputParams } | { pathname: `/_sitemap`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}/explore` | `/explore`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}/favorite` | `/favorite`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}/history` | `/history`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}` | `/`; params?: Router.UnknownOutputParams; } | { pathname: `/+not-found`, params: Router.UnknownOutputParams & {  } };\r\n      href: Router.RelativePathString | Router.ExternalPathString | `/_sitemap${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}/explore${`?${string}` | `#${string}` | ''}` | `/explore${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}/favorite${`?${string}` | `#${string}` | ''}` | `/favorite${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}/history${`?${string}` | `#${string}` | ''}` | `/history${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}${`?${string}` | `#${string}` | ''}` | `/${`?${string}` | `#${string}` | ''}` | { pathname: Router.RelativePathString, params?: Router.UnknownInputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownInputParams } | { pathname: `/_sitemap`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/explore` | `/explore`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/favorite` | `/favorite`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/history` | `/history`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}` | `/`; params?: Router.UnknownInputParams; } | `/+not-found` | { pathname: `/+not-found`, params: Router.UnknownInputParams & {  } };\r\n    }\r\n  }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.expo/types/router.d.ts b/.expo/types/router.d.ts
+--- a/.expo/types/router.d.ts	(revision 2a3bba0c151ae46ee61d7291bbb2931270b96de1)
++++ b/.expo/types/router.d.ts	(date 1738817900655)
+@@ -6,9 +6,9 @@
+ declare module 'expo-router' {
+   export namespace ExpoRouter {
+     export interface __routes<T extends string | object = string> {
+-      hrefInputParams: { pathname: Router.RelativePathString, params?: Router.UnknownInputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownInputParams } | { pathname: `/_sitemap`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/explore` | `/explore`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/favorite` | `/favorite`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/history` | `/history`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}` | `/`; params?: Router.UnknownInputParams; } | { pathname: `/+not-found`, params: Router.UnknownInputParams & {  } };
+-      hrefOutputParams: { pathname: Router.RelativePathString, params?: Router.UnknownOutputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownOutputParams } | { pathname: `/_sitemap`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}/explore` | `/explore`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}/favorite` | `/favorite`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}/history` | `/history`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}` | `/`; params?: Router.UnknownOutputParams; } | { pathname: `/+not-found`, params: Router.UnknownOutputParams & {  } };
+-      href: Router.RelativePathString | Router.ExternalPathString | `/_sitemap${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}/explore${`?${string}` | `#${string}` | ''}` | `/explore${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}/favorite${`?${string}` | `#${string}` | ''}` | `/favorite${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}/history${`?${string}` | `#${string}` | ''}` | `/history${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}${`?${string}` | `#${string}` | ''}` | `/${`?${string}` | `#${string}` | ''}` | { pathname: Router.RelativePathString, params?: Router.UnknownInputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownInputParams } | { pathname: `/_sitemap`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/explore` | `/explore`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/favorite` | `/favorite`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/history` | `/history`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}` | `/`; params?: Router.UnknownInputParams; } | `/+not-found` | { pathname: `/+not-found`, params: Router.UnknownInputParams & {  } };
++      hrefInputParams: { pathname: Router.RelativePathString, params?: Router.UnknownInputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownInputParams } | { pathname: `${'/(tabs)'}/home` | `/home`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/login` | `/login`; params?: Router.UnknownInputParams; } | { pathname: `/App`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/LoginRegister` | `/LoginRegister`; params?: Router.UnknownInputParams; } | { pathname: `/_sitemap`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/explore` | `/explore`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/favorite` | `/favorite`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/history` | `/history`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}` | `/`; params?: Router.UnknownInputParams; } | { pathname: `/+not-found`, params: Router.UnknownInputParams & {  } };
++      hrefOutputParams: { pathname: Router.RelativePathString, params?: Router.UnknownOutputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownOutputParams } | { pathname: `${'/(tabs)'}/home` | `/home`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}/login` | `/login`; params?: Router.UnknownOutputParams; } | { pathname: `/App`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}/LoginRegister` | `/LoginRegister`; params?: Router.UnknownOutputParams; } | { pathname: `/_sitemap`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}/explore` | `/explore`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}/favorite` | `/favorite`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}/history` | `/history`; params?: Router.UnknownOutputParams; } | { pathname: `${'/(tabs)'}` | `/`; params?: Router.UnknownOutputParams; } | { pathname: `/+not-found`, params: Router.UnknownOutputParams & {  } };
++      href: Router.RelativePathString | Router.ExternalPathString | `${'/(tabs)'}/home${`?${string}` | `#${string}` | ''}` | `/home${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}/login${`?${string}` | `#${string}` | ''}` | `/login${`?${string}` | `#${string}` | ''}` | `/App${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}/LoginRegister${`?${string}` | `#${string}` | ''}` | `/LoginRegister${`?${string}` | `#${string}` | ''}` | `/_sitemap${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}/explore${`?${string}` | `#${string}` | ''}` | `/explore${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}/favorite${`?${string}` | `#${string}` | ''}` | `/favorite${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}/history${`?${string}` | `#${string}` | ''}` | `/history${`?${string}` | `#${string}` | ''}` | `${'/(tabs)'}${`?${string}` | `#${string}` | ''}` | `/${`?${string}` | `#${string}` | ''}` | { pathname: Router.RelativePathString, params?: Router.UnknownInputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownInputParams } | { pathname: `${'/(tabs)'}/home` | `/home`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/login` | `/login`; params?: Router.UnknownInputParams; } | { pathname: `/App`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/LoginRegister` | `/LoginRegister`; params?: Router.UnknownInputParams; } | { pathname: `/_sitemap`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/explore` | `/explore`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/favorite` | `/favorite`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}/history` | `/history`; params?: Router.UnknownInputParams; } | { pathname: `${'/(tabs)'}` | `/`; params?: Router.UnknownInputParams; } | `/+not-found` | { pathname: `/+not-found`, params: Router.UnknownInputParams & {  } };
+     }
+   }
+ }
+Index: package-lock.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/package-lock.json b/package-lock.json
+--- a/package-lock.json	(revision 2a3bba0c151ae46ee61d7291bbb2931270b96de1)
++++ b/package-lock.json	(date 1738817899358)
+@@ -28,6 +28,7 @@
+         "expo-web-browser": "~14.0.2",
+         "react": "^18.3.1",
+         "react-dom": "18.3.1",
++        "react-icons": "^5.4.0",
+         "react-native": "0.76.6",
+         "react-native-gesture-handler": "~2.20.2",
+         "react-native-reanimated": "~3.16.1",
+@@ -12151,6 +12152,15 @@
+         "react-dom": "^16.6.0 || ^17.0.0 || ^18.0.0"
+       }
+     },
++    "node_modules/react-icons": {
++      "version": "5.4.0",
++      "resolved": "https://registry.npmjs.org/react-icons/-/react-icons-5.4.0.tgz",
++      "integrity": "sha512-7eltJxgVt7X64oHh6wSWNwwbKTCtMfK35hcjvJS0yxEAhPM8oUKdS3+kqaW1vicIltw+kR2unHaa12S9pPALoQ==",
++      "license": "MIT",
++      "peerDependencies": {
++        "react": "*"
++      }
++    },
+     "node_modules/react-is": {
+       "version": "18.3.1",
+       "resolved": "https://registry.npmjs.org/react-is/-/react-is-18.3.1.tgz",
+Index: package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n  \"name\": \"quotelingo\",\r\n  \"main\": \"expo-router/entry\",\r\n  \"version\": \"1.0.0\",\r\n  \"scripts\": {\r\n    \"start\": \"expo start\",\r\n    \"reset-project\": \"node ./scripts/reset-project.js\",\r\n    \"android\": \"expo run:android\",\r\n    \"ios\": \"expo run:ios\",\r\n    \"web\": \"expo start --web\",\r\n    \"test\": \"jest --watchAll\",\r\n    \"lint\": \"expo lint\"\r\n  },\r\n  \"jest\": {\r\n    \"preset\": \"jest-expo\"\r\n  },\r\n  \"dependencies\": {\r\n    \"@expo/vector-icons\": \"^14.0.2\",\r\n    \"@react-navigation/bottom-tabs\": \"^7.2.0\",\r\n    \"@react-navigation/native\": \"^7.0.14\",\r\n    \"@react-navigation/stack\": \"^7.1.1\",\r\n    \"axios\": \"^1.7.9\",\r\n    \"expo\": \"~52.0.28\",\r\n    \"expo-blur\": \"~14.0.3\",\r\n    \"expo-constants\": \"~17.0.5\",\r\n    \"expo-font\": \"~13.0.3\",\r\n    \"expo-haptics\": \"~14.0.1\",\r\n    \"expo-linking\": \"~7.0.5\",\r\n    \"expo-router\": \"~4.0.17\",\r\n    \"expo-splash-screen\": \"~0.29.21\",\r\n    \"expo-status-bar\": \"~2.0.1\",\r\n    \"expo-symbols\": \"~0.2.1\",\r\n    \"expo-system-ui\": \"~4.0.7\",\r\n    \"expo-web-browser\": \"~14.0.2\",\r\n    \"react\": \"^18.3.1\",\r\n    \"react-dom\": \"18.3.1\",\r\n    \"react-native\": \"0.76.6\",\r\n    \"react-native-gesture-handler\": \"~2.20.2\",\r\n    \"react-native-reanimated\": \"~3.16.1\",\r\n    \"react-native-safe-area-context\": \"4.12.0\",\r\n    \"react-native-screens\": \"~4.4.0\",\r\n    \"react-native-web\": \"~0.19.13\",\r\n    \"react-native-webview\": \"13.12.5\",\r\n    \"@react-native-async-storage/async-storage\": \"1.23.1\"\r\n  },\r\n  \"devDependencies\": {\r\n    \"@babel/core\": \"^7.25.2\",\r\n    \"@types/jest\": \"^29.5.12\",\r\n    \"@types/react\": \"~18.3.12\",\r\n    \"@types/react-test-renderer\": \"^18.3.0\",\r\n    \"jest\": \"^29.2.1\",\r\n    \"jest-expo\": \"~52.0.3\",\r\n    \"react-test-renderer\": \"18.3.1\",\r\n    \"typescript\": \"^5.3.3\"\r\n  },\r\n  \"private\": true\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/package.json b/package.json
+--- a/package.json	(revision 2a3bba0c151ae46ee61d7291bbb2931270b96de1)
++++ b/package.json	(date 1738817899366)
+@@ -16,6 +16,7 @@
+   },
+   "dependencies": {
+     "@expo/vector-icons": "^14.0.2",
++    "@react-native-async-storage/async-storage": "1.23.1",
+     "@react-navigation/bottom-tabs": "^7.2.0",
+     "@react-navigation/native": "^7.0.14",
+     "@react-navigation/stack": "^7.1.1",
+@@ -34,14 +35,14 @@
+     "expo-web-browser": "~14.0.2",
+     "react": "^18.3.1",
+     "react-dom": "18.3.1",
++    "react-icons": "^5.4.0",
+     "react-native": "0.76.6",
+     "react-native-gesture-handler": "~2.20.2",
+     "react-native-reanimated": "~3.16.1",
+     "react-native-safe-area-context": "4.12.0",
+     "react-native-screens": "~4.4.0",
+     "react-native-web": "~0.19.13",
+-    "react-native-webview": "13.12.5",
+-    "@react-native-async-storage/async-storage": "1.23.1"
++    "react-native-webview": "13.12.5"
+   },
+   "devDependencies": {
+     "@babel/core": "^7.25.2",
+Index: app/(tabs)/LoginRegister.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/(tabs)/LoginRegister.tsx b/app/(tabs)/LoginRegister.tsx
+new file mode 100644
+--- /dev/null	(date 1738817899379)
++++ b/app/(tabs)/LoginRegister.tsx	(date 1738817899379)
+@@ -0,0 +1,103 @@
++import React, {useState} from 'react';
++import "./LoginRegister.css";
++import { FaUser, FaLock, FaEnvelope  } from "react-icons/fa";
++
++
++const LoginRegister = () => {
++
++    const[action, setAction] = useState("");
++
++    const registerLink =() => {
++        setAction("active");
++    };
++
++    const loginLink =() => {
++        setAction("");
++    };
++
++    return (
++
++        <div className= {`wrapper ${action}`}>
++            <div className= "form-box login">
++                <form action="">
++                    <h1>Login</h1>
++                    <div className="input-box">
++                        <input type= "text" placeholder="Username" required />
++                        <FaUser className="icon"/>
++                    </div>
++                    <div className="input-box">
++                        <input type= "password" placeholder="Password" required />
++                        <FaLock className="icon"/>
++                    </div>
++                    <div className="remember-forgot">
++                        <label><input type ="checkbox" /> Remember me</label>
++                        <a href="#">Forgot Password?</a>
++                    </div>
++                    <button type="submit" onClick={func}>Login</button>
++                    <div className ="register-link" >
++                        <p>Don't have an account? <a
++                            href="#" onClick={registerLink}>Register</a></p>
++                    </div>
++                </form>
++            </div>
++
++            <div className= "form-box register">
++                <form action="">
++                    <h1>Registration</h1>
++                    <div className="input-box">
++                        <input type= "text" placeholder="Username" required />
++                        <FaUser className="icon"/>
++                    </div>
++                    <div className="input-box">
++                        <input type= "Email" placeholder="Email" required />
++                        <FaEnvelope className="icon"/>
++                    </div>
++                    <div className="input-box">
++                        <input type= "password" placeholder="Password" required />
++                        <FaLock className="icon"/>
++
++                    </div>
++
++                    <div className="remember-forgot">
++                        <label><input type ="checkbox" />I agree to the terms & conditions</label>
++                    </div>
++
++                    <button type="submit" >Register</button>
++
++                    <div className ="register-link" >
++                        <p>Already have an account? <a
++                            href="#" onClick={loginLink}> Login </a></p>
++                    </div>
++
++                </form>
++            </div>
++        </div>
++    );
++
++
++
++
++};
++function func() {
++    const username = document.getElementById("Username");
++    const password = document.getElementById("Password");
++    //else (email == null || password == null) {
++      //  alert("Please enter all the fields");
++    //}
++    // @ts-ignore
++    if (username == "rull@1" && password == "1234") {
++        alert("Success");
++    }
++    else {
++        alert("Please enter all the fields");
++        window.location.href = "https://www.youtube.com/watch?v=3nrQGtVztR0";
++    }
++
++        //window.location.href = "https://www.youtube.com/watch?v=3nrQGtVztR0";
++
++
++
++}
++
++
++export default LoginRegister;
+\ No newline at end of file
