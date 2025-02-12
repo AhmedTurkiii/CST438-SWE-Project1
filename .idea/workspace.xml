@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81087c05-8da6-416f-9d43-1454d7567cc8" name="Changes" comment="Login and registration finished" />
+    <list default="true" id="81087c05-8da6-416f-9d43-1454d7567cc8" name="Changes" comment="Login and registration finished">
+      <change afterPath="$PROJECT_DIR$/assets/images/LanLogo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.expo/types/router.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.expo/types/router.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/LoginRegister.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/LoginRegister.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/home.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/login.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/App.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/IconSymbol.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/IconSymbol.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Rull_branch" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,6 +59,7 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2sKkqaWmKfOLCfXOlcONh4kGxLz" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -55,7 +68,8 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "last_opened_file_path": "C:/Users/rulla/WebstormProjects/CST438-SWE-Project1",
+    "git-widget-placeholder": "#27 on Rull__branch",
+    "last_opened_file_path": "C:/Users/rulla/OneDrive/Desktop/College",
     "list.type.of.created.stylesheet": "Less",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -68,14 +82,15 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\app\(tabs)" />
       <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\assets\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\assets\images" />
+      <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1" />
       <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\app\(tabs)" />
       <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\app" />
       <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\app\Login" />
-      <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\components" />
-      <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\assets\images" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -113,6 +128,11 @@
       <workItem from="1738880524369" duration="175000" />
       <workItem from="1738880713511" duration="64000" />
       <workItem from="1738880786216" duration="371000" />
+      <workItem from="1739305905495" duration="1809000" />
+      <workItem from="1739309563215" duration="373000" />
+      <workItem from="1739311025585" duration="1460000" />
+      <workItem from="1739312652482" duration="8038000" />
+      <workItem from="1739321072300" duration="325000" />
     </task>
     <task id="LOCAL-00001" summary="Here is some part of the signup and login in page">
       <option name="closed" value="true" />
@@ -183,6 +203,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Here is some part of the signup and login in page" />
