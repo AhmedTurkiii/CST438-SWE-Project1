@@ -1,128 +1,117 @@
-import { Image, StyleSheet, Platform, ActivityIndicator } from 'react-native';
-import axios from 'axios';
-import { HelloWave } from '@/components/HelloWave';
+//login page: 
+import { Image, StyleSheet, Platform, ActivityIndicator, View, Text, TextInput, Button, Alert, } from 'react-native';
+import { useRouter } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { initializeDatabase} from '@/src/db/database';
+import { useSQLiteContext } from 'expo-sqlite';
+import { User } from '@/src/types/userInfo';
+
+
+
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useEffect, useState } from 'react';
-import React from 'react';
 
-const API_URL = 'https://quotes15.p.rapidapi.com/quotes/random/?language_code=en';
-const TRANSLATION_API_URL = 'https://api.mymemory.translated.net/get';
-const API_HEADERS = {
-    'X-RapidAPI-Key': 'a5a304577amsh4a57cfe3d7f6242p1bd77bjsn25ca0059531e', 
-    'X-RapidAPI-Host': 'quotes15.p.rapidapi.com',
-};
 
-export default function HomeScreen() {
-    const [quote, setQuote] = useState(null);
-    const [quoteId, setQuoteId] = useState(null);
-    const [translatedQuote, setTranslatedQuote] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+export default function LoginScreen() {
+  const router = useRouter();
+  const db = useSQLiteContext();
+  const [username, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  
 
-    useEffect(() => {
-        const getQuote = async () => {
-            try {
-                const response = await axios.get(API_URL, { headers: API_HEADERS });
-                const fetchedQuote = response.data.content;
-                const fetchedQuoteId = response.data.id;
-                setQuote(fetchedQuote);
-                setQuoteId(fetchedQuoteId);
+  useEffect(() => {
+    initializeDatabase(db);
+  }, [db]);
+  
+  
+  const userLogin = async () => {
+      
+    if (!username || !password) {
+      Alert.alert("Error", "Please enter both username and password.");
+      return;
+    }
 
-                // Translate the quote to French
-                const translationResponse = await axios.get(TRANSLATION_API_URL, {
-                    params: {
-                        q: fetchedQuote,
-                        langpair: 'en|es',
-                    },
-                });
-                setTranslatedQuote(translationResponse.data.responseData.translatedText);
-            } catch (error) {
-                setError('Failed to fetch quote');
-            } finally {
-                setLoading(false);
-            }
-        };
+    setIsLoading(true); // Show loading state
 
-        getQuote();
-    }, []);
+    try {
+      const user = (await db.getFirstAsync('SELECT * FROM user WHERE username = ?', [username])) as User;
+      if (!user) {
+        Alert.alert("Error", "Invalid username.");
+        return;
+      }
 
-    return (
-        <ParallaxScrollView
-            headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-            headerImage={
-                <Image
-                    source={require('@/assets/images/Designer-2.jpeg')}
-                    style={styles.reactLogo}
-                />
-            }
-        >
-            <ThemedView style={styles.titleContainer}>
-                <ThemedText type="title">Today’s Quote</ThemedText>
-                <HelloWave />
-            </ThemedView>
-            <ThemedView style={styles.stepContainer}>
-                {/* <ThemedText type="subtitle">
-                    This is the page where all your favorite quotes will appear! Below is a randomly generated quote.
-                </ThemedText> */}
-            </ThemedView>
-            <ThemedView style={styles.quoteContainer}>
-                {loading ? (
-                    <ActivityIndicator size="large" color="black" />
-                ) : error ? (
-                    <ThemedText>{error}</ThemedText>
-                ) : (
-                    <>
-                        {/* <ThemedText>ID: {quoteId}</ThemedText> */}
-                        <ThemedText style={styles.quoteText}>{quote}</ThemedText>
-                        <ThemedText style={styles.translatedText}>{translatedQuote}</ThemedText>
-                    </>
-                )}
-            </ThemedView>
-        </ParallaxScrollView>
-    );
+      if (user.password === password) {
+        await AsyncStorage.setItem('isAuthenticated', 'true');
+        router.replace('/(tabs)/home');
+      }else {
+        Alert.alert("Login Failed", "Incorrect password.");
+      }
+    } catch (error) {
+      console.error("Authentication Error:", error);
+      Alert.alert("Error", "An error occurred during authentication.");
+      } finally {
+        setIsLoading(false);
+      }
+
+    };
+  return (
+    <ParallaxScrollView
+      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+      headerImage={
+        <Image
+          source={require('@/assets/images/QuoteLingo_Logo.jpeg')}
+          style={styles.reactLogo}
+        />
+      }>
+      <ThemedView style={styles.titleContainer}>
+        <ThemedText type="title">Welcome to QuoteLingo! Please Login or Create an Account!</ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <TextInput
+            placeholder='Enter Username'
+            value={username}
+            onChangeText={setUserName}
+            style={styles.input}
+        />
+        <TextInput
+            placeholder='Enter Password'
+            value={password}
+            onChangeText={setPassword}
+            style={styles.input}
+            secureTextEntry
+        />
+        <Button title='Login!' onPress={userLogin}/>
+      </ThemedView>
+    </ParallaxScrollView>
+  );
 }
 
 const styles = StyleSheet.create({
-    reactLogo: {
-        height: 250,
-        width: 410,
-        bottom: 0,
-        left: 0,
-        position: 'absolute',
-    },
-    titleContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        gap: 8,
-    },
-    stepContainer: {
-        gap: 8,
-        marginBottom: 8,
-    },
-    quoteContainer: {
-        margin: 0.1,
-        padding: 5,
-        backgroundColor: '#89cff0',
-        borderRadius: 10,
-    },
-    quoteText: {
-      fontSize: 18, 
-      color: '#1E3A8A', // Dark blue for a professional and readable look
-      fontWeight: 'bold', // Emphasize the original quote
-      textAlign: 'center',
-      padding: 10,
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
-  
-  translatedText: {
-      fontSize: 16, 
-      color: '#6B7280', // Soft gray for a subtle contrast
-      fontStyle: 'italic', // Differentiate translation with italics
-      textAlign: 'center',
-      padding: 10,
-      backgroundColor: '#F3F4F6', // Light gray background for a distinct separation
-      borderRadius: 8, // Soft rounded corners
+  stepContainer: {
+    gap: 8,
+    marginBottom: 8,
   },
-  
+  reactLogo: {
+    height: 250,
+    width: 410,
+    bottom: 0,
+    left: 0,
+    position: 'absolute',
+  },
+
+  input: {
+    height: 40,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    marginBottom: 15,
+    paddingHorizontal: 10,
+  },
 });
