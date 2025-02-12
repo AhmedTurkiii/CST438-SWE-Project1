@@ -1,8 +1,6 @@
 import { Redirect, Tabs } from 'expo-router';
 import React, { useState, useEffect } from 'react';
 import { Platform } from 'react-native';
-import { createTables } from '@/src/db/statements';
-
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
@@ -10,37 +8,37 @@ import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { SQLiteDatabase, SQLiteProvider } from 'expo-sqlite';
+import { initializeDatabase } from '@/src/db/database';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-  const [isAuthenticated, setIsAuthenticated] = useState <boolean | null>(null);
+  //const [isAuthenticated, setIsAuthenticated] = useState <boolean | null>(null);
 
-  useEffect(() => {
-    createTables(); 
-    const checkAuthStatus = async () => {
-      try {
-        const authStatus = await AsyncStorage.getItem('isAuthenticated');
-        if(authStatus !== isAuthenticated){
-          setIsAuthenticated(authStatus === 'true');
-          console.log("Authentication successful!");
-        }
-        
-      } catch(error) {
-        console.error("Error reading authorization status from storage", error);
-        setIsAuthenticated(false);
-      }
-    };
-    checkAuthStatus();
-  }, []);
+  // useEffect(() => {
 
-  if(isAuthenticated === null) {
-    return null;
-  }
+  //   const checkAuthStatus = async () => {
+  //     try {
+  //       const authStatus = await AsyncStorage.getItem('isAuthenticated');
+  //       setIsAuthenticated(authStatus === 'true');
+  //       console.log("Authentication status checked");
+  //     } catch(error) {
+  //       console.error("Error reading authorization status from storage", error);
+  //       setIsAuthenticated(false);
+  //     }
+  //   };
+  //   checkAuthStatus();
+  // }, []);
+
+  // if(isAuthenticated === null) {
+  //   return null;
+  // }
   
-  if (!isAuthenticated) {
-    return <Redirect href={"/login"}/>;
-  }
+  // if (!isAuthenticated) {
+  //   return <Redirect href={"/(tabs)"}/>;
+  // }
   return (
+    <SQLiteProvider databaseName='database.db' onInit={initializeDatabase}>
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
@@ -56,14 +54,6 @@ export default function TabLayout() {
         }),
       }}
       >
-
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Login',
-          headerShown: false,
-        }}
-      />
       <Tabs.Screen
         name="home"
         options={{
@@ -85,7 +75,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <AntDesign name="heart" size={28} color={color}/>,
         }}
         />
-     
     </Tabs>
+    </SQLiteProvider>
   );
 }

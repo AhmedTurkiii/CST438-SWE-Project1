@@ -2,8 +2,11 @@
 import { Image, StyleSheet, Platform, ActivityIndicator, View, Text, TextInput, Button, Alert, } from 'react-native';
 import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { authenticateUser, db } from '@/src/db/statements';
-import bcrypt from 'bcryptjs';
+import { initializeDatabase} from '@/src/db/database';
+import { useSQLiteContext } from 'expo-sqlite';
+import { User } from '@/src/types/userInfo';
+
+
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
@@ -13,33 +16,46 @@ import { useEffect, useState } from 'react';
 
 export default function LoginScreen() {
   const router = useRouter();
+  const db = useSQLiteContext();
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  
 
-    const userLogin = async () => {
-      if (!username || !password) {
-        Alert.alert("Error", "Please enter both username and password.");
+  useEffect(() => {
+    initializeDatabase(db);
+  }, [db]);
+  
+  
+  const userLogin = async () => {
+      
+    if (!username || !password) {
+      Alert.alert("Error", "Please enter both username and password.");
+      return;
+    }
+
+    setIsLoading(true); // Show loading state
+
+    try {
+      const user = (await db.getFirstAsync('SELECT * FROM user WHERE username = ?', [username])) as User;
+      if (!user) {
+        Alert.alert("Error", "Invalid username.");
         return;
       }
 
-      setIsLoading(true); // Show loading state
-
-      try {
-        const user = await authenticateUser(username, password); // Use async/await
-        if (user) {
-          await AsyncStorage.setItem('isAuthenticated', 'true');
-          router.replace('/(tabs)/home');
-        } else {
-          Alert.alert("Error", "Invalid username or password.");
-        }
-      } catch (error) {
-        console.error("Authentication error:", error);
-        Alert.alert("Error", "An error occurred during authentication.");
-      } finally {
-        setIsLoading(false); // Hide loading state
+      if (user.password === password) {
+        await AsyncStorage.setItem('isAuthenticated', 'true');
+        router.replace('/(tabs)/home');
+      }else {
+        Alert.alert("Login Failed", "Incorrect password.");
       }
-      
+    } catch (error) {
+      console.error("Authentication Error:", error);
+      Alert.alert("Error", "An error occurred during authentication.");
+      } finally {
+        setIsLoading(false);
+      }
+
     };
   return (
     <ParallaxScrollView
