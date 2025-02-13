@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81087c05-8da6-416f-9d43-1454d7567cc8" name="Changes" comment="Take a look">
-      <change afterPath="$PROJECT_DIR$/app/(tabs)/a.tsx" afterDir="false" />
+    <list default="true" id="81087c05-8da6-416f-9d43-1454d7567cc8" name="Changes" comment="Trying to show the Language list">
+      <change afterPath="$PROJECT_DIR$/components/DropDown.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/countries.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.expo/types/router.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.expo/types/router.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(tabs)/Language.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/Language.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/a.tsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,10 +20,12 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
-        <option value="TypeScript File" />
         <option value="Less File" />
+        <option value="JSX File" />
+        <option value="CSS File" />
+        <option value="HTML File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -32,6 +36,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -57,33 +62,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Language-Rull",
-    "last_opened_file_path": "C:/Users/rulla/OneDrive/Desktop/College",
-    "list.type.of.created.stylesheet": "Less",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\rulla\\WebstormProjects\\CST438-SWE-Project1\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Language-Rull&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/rulla/OneDrive/Desktop/College&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\rulla\\WebstormProjects\\CST438-SWE-Project1\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\app\(tabs)" />
       <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\assets\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\components" />
       <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\assets\images" />
       <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1" />
       <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\app\(tabs)" />
       <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\app" />
-      <recent name="C:\Users\rulla\WebstormProjects\CST438-SWE-Project1\app\Login" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -126,6 +132,9 @@
       <workItem from="1739311025585" duration="1460000" />
       <workItem from="1739312652482" duration="8038000" />
       <workItem from="1739321072300" duration="325000" />
+      <workItem from="1739443424044" duration="4492000" />
+      <workItem from="1739472283303" duration="4999000" />
+      <workItem from="1739477613106" duration="5146000" />
     </task>
     <task id="LOCAL-00001" summary="Here is some part of the signup and login in page">
       <option name="closed" value="true" />
@@ -199,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739432521399</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Trying to show the Language list">
+      <option name="closed" value="true" />
+      <created>1739439586602</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1739439586602</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,6 +238,7 @@
     <MESSAGE value="Login page fixed" />
     <MESSAGE value="Login and registration finished" />
     <MESSAGE value="Take a look" />
-    <option name="LAST_COMMIT_MESSAGE" value="Take a look" />
+    <MESSAGE value="Trying to show the Language list" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trying to show the Language list" />
   </component>
 </project>

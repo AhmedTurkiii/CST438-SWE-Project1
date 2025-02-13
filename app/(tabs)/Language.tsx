@@ -1,12 +1,14 @@
-import {ActivityIndicator, Image, StyleSheet, TouchableOpacity} from "react-native";
-import React, {useEffect, useState} from "react";
+import {ActivityIndicator, Image, Text, StyleSheet, TouchableOpacity, FlatList} from "react-native";
+import React, {useEffect, useState, useCallback, useRef,} from "react";
 import axios from "axios";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import {ThemedView} from "@/components/ThemedView";
 import {ThemedText} from "@/components/ThemedText";
 import {HelloWave} from "@/components/HelloWave";
-import Select from "ajv-keywords/src/keywords/select";
-
+import {countries} from "@/components/ui/countries";
+import Dropdown from "@/components/DropDown";
+import { StatusBar} from "expo-status-bar";
+import items from "ajv/lib/vocabularies/applicator/items";
 
 
 // Poner una caja (box) donde el usuario pueda elegir que lenaguge poner
@@ -18,16 +20,28 @@ const API_HEADERS = {
     'X-RapidAPI-Host': 'quotes15.p.rapidapi.com',
 };
 
+const formattedCountries = countries.map((c)=>({
+    value: c.label,
+    label: `${c.flag} ${c.value}`,
+}));
 
 
+const languages = [
+    { code: 'en', name: 'English' },
+    { code: 'es', name: 'Spanish' },
+    { code: 'fr', name: 'French' },
+    { code: 'de', name: 'German' },
+    ];
+export default function FavoriteLanguage() {
 
-export default function FavoriteLanguage(){
+
 
     const [quote, setQuote] = useState(null);
     const [quoteId, setQuoteId] = useState(null);
     const [translatedQuote, setTranslatedQuote] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+
 
 
     useEffect(() => {
@@ -55,6 +69,7 @@ export default function FavoriteLanguage(){
         };
 
         getQuote();
+
     }, []);
     /**
      Right here is the option where the user can pick up which language the user would liek to use
@@ -76,28 +91,27 @@ export default function FavoriteLanguage(){
                 <ThemedText type="title">Favorite Language </ThemedText>
                 <HelloWave />
             </ThemedView>
+            <ThemedView style={styles.stepContainer }>
+
+            </ThemedView>
 
             <ThemedView style={styles.stepContainer}>
                 <ThemedText type="subtitle"> This box is your principal language (English) </ThemedText>
+                <FlatList data={languages} renderItem={({item}) => (
+                    <ThemedView style={{ flexDirection: 'row', alignItems: 'center' }} >
+                        <
+                )}
             </ThemedView>
               Please, pick up the language you speak
             <ThemedText type="subtitle">
 
                -- List of Language --
             </ThemedText>
-            <ThemedView style={styles.quoteContainer}>
-                {loading ? (
-                    <ActivityIndicator size="large" color="black" />
-                ) : error ? (
-                    <ThemedText>{error}</ThemedText>
-                ) : (
-                    <>
-                        {/* <ThemedText>ID: {quoteId}</ThemedText> */}
-                        <ThemedText style={styles.quoteText}>{quote}</ThemedText>
-                        <ThemedText style={styles.translatedText}>{translatedQuote}</ThemedText>
-                    </>
-                )}
+            <ThemedView style={styles.stepContainer}>
+                <StatusBar style='auto'/>
+                <Dropdown data={formattedCountries} onChange={console.log} placeholder="Select country"/>
             </ThemedView>
+
 
 
 
@@ -122,9 +136,6 @@ export default function FavoriteLanguage(){
 
     );
 }
-
-
-
 
 
 
@@ -168,7 +179,47 @@ const styles = StyleSheet.create({
         backgroundColor: '#F3F4F6',
         borderRadius: 8,
     },
-
+    ////
+    container: {
+        flex: 1,
+        backgroundColor: "#ddd",
+        alignItems: "center",
+        justifyContent: "center",
+        paddingHorizontal: 20,
+        gap: 10,
+    },
+    backdrop: {
+        padding: 20,
+        justifyContent: "center",
+        alignItems: "center",
+        flex: 1,
+    },
+    optionItem: {
+        height: 40,
+        justifyContent: "center",
+    },
+    separator: {
+        height: 4,
+    },
+    options: {
+        position: "absolute",
+        // top: 53,
+        backgroundColor: "white",
+        width: "100%",
+        padding: 10,
+        borderRadius: 6,
+        maxHeight: 250,
+    },
+    button: {
+        height: 50,
+        justifyContent: "space-between",
+        backgroundColor: "#fff",
+        flexDirection: "row",
+        width: "100%",
+        alignItems: "center",
+        paddingHorizontal: 15,
+        borderRadius: 8,
+    },
 });
 
 
