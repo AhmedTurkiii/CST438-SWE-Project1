@@ -25,19 +25,10 @@ export const initializeDatabase = async (db : SQLiteDatabase) => {
                 user_id INTEGER,
                 quote TEXT NOT NULL,
                 translated_quote TEXT,
-                FOREIGN KEY (user_id) REFERENCES user(id))`
+                FOREIGN KEY (user_id) REFERENCES user(id));
+            `
         );
 
-        // await db.runAsync(`
-        //     INSERT OR IGNORE INTO user (username, password) 
-        //     VALUES('admin', 'password');
-
-        //     INSERT OR IGNORE INTO user (username, password) 
-        //     VALUES('test', '123');
-
-        //     INSERT OR IGNORE INTO user (username, password) 
-        //     VALUES('aleon', '123');
-        // `);
         try {
             await db.runAsync(`
                 INSERT OR IGNORE INTO user (username, password) VALUES('admin', 'password');
@@ -52,12 +43,7 @@ export const initializeDatabase = async (db : SQLiteDatabase) => {
         } catch (error) {
             console.error("Error inserting users:", error);
         }
-        
-
-        
-        // const users = await db.getAllAsync("SELECT * FROM user");
-        // console.log("Users in database:", users);
-        // console.log("Database initialized and default users are inserted.", db);
+    
         
     } catch (e) {
         console.error ("Error initializing database", e);
