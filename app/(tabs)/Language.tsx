@@ -1,11 +1,11 @@
-import {ActivityIndicator, Image, StyleSheet} from "react-native";
+import {ActivityIndicator, Image, StyleSheet, TouchableOpacity} from "react-native";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import {ThemedView} from "@/components/ThemedView";
 import {ThemedText} from "@/components/ThemedText";
 import {HelloWave} from "@/components/HelloWave";
-
+import Select from "ajv-keywords/src/keywords/select";
 
 
 
@@ -80,9 +80,9 @@ export default function FavoriteLanguage(){
             <ThemedView style={styles.stepContainer}>
                 <ThemedText type="subtitle"> This box is your principal language (English) </ThemedText>
             </ThemedView>
-
               Please, pick up the language you speak
             <ThemedText type="subtitle">
+
                -- List of Language --
             </ThemedText>
             <ThemedView style={styles.quoteContainer}>
@@ -98,6 +98,8 @@ export default function FavoriteLanguage(){
                     </>
                 )}
             </ThemedView>
+
+
 
 -------------------------------------------------------------------------------
 
@@ -116,8 +118,16 @@ export default function FavoriteLanguage(){
 
 
         </ParallaxScrollView>
+
+
     );
 }
+
+
+
+
+
+
 
 const styles = StyleSheet.create({
     titleContainer: {
