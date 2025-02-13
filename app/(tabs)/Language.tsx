@@ -1,4 +1,4 @@
-import {ActivityIndicator, Image, Text, StyleSheet, TouchableOpacity, FlatList} from "react-native";
+import {ActivityIndicator, Image, Text, StyleSheet, TouchableOpacity} from "react-native";
 import React, {useEffect, useState, useCallback, useRef,} from "react";
 import axios from "axios";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
@@ -8,7 +8,6 @@ import {HelloWave} from "@/components/HelloWave";
 import {countries} from "@/components/ui/countries";
 import Dropdown from "@/components/DropDown";
 import { StatusBar} from "expo-status-bar";
-import items from "ajv/lib/vocabularies/applicator/items";
 
 
 // Poner una caja (box) donde el usuario pueda elegir que lenaguge poner
@@ -26,12 +25,7 @@ const formattedCountries = countries.map((c)=>({
 }));
 
 
-const languages = [
-    { code: 'en', name: 'English' },
-    { code: 'es', name: 'Spanish' },
-    { code: 'fr', name: 'French' },
-    { code: 'de', name: 'German' },
-    ];
+
 export default function FavoriteLanguage() {
 
 
@@ -96,11 +90,7 @@ export default function FavoriteLanguage() {
             </ThemedView>
 
             <ThemedView style={styles.stepContainer}>
-                <ThemedText type="subtitle"> This box is your principal language (English) </ThemedText>
-                <FlatList data={languages} renderItem={({item}) => (
-                    <ThemedView style={{ flexDirection: 'row', alignItems: 'center' }} >
-                        <
-                )}
+                <ThemedText type="subtitle"> This box is for the language you speak (English) </ThemedText>
             </ThemedView>
               Please, pick up the language you speak
             <ThemedText type="subtitle">
@@ -127,8 +117,21 @@ export default function FavoriteLanguage() {
             </ThemedView>
             Please, pick up your favorite language
             <ThemedText type="subtitle">
-                -- List of Language --
+                -- List of your favorite Language --
             </ThemedText>
+            <ThemedView style={styles.stepContainer}>
+                <StatusBar style='auto'/>
+                <Dropdown data={formattedCountries} onChange={console.log} placeholder="Select country"/>
+                <StatusBar style='auto'/>
+                <Dropdown data={formattedCountries} onChange={console.log} placeholder="Select country"/>
+                <StatusBar style='auto'/>
+                <Dropdown data={formattedCountries} onChange={console.log} placeholder="Select country"/>
+                <StatusBar style='auto'/>
+                <Dropdown data={formattedCountries} onChange={console.log} placeholder="Select country"/>
+                <StatusBar style='auto'/>
+                <Dropdown data={formattedCountries} onChange={console.log} placeholder="Select country"/>
+
+            </ThemedView>
 
 
         </ParallaxScrollView>
