@@ -1,16 +1,11 @@
-import { useSQLiteContext } from "expo-sqlite";
+import * as SQLite from "expo-sqlite";
+import type { HistoryQuote } from "@/src/types/historyQuote";
 
-export interface HistoryQuote {
-    id: number;
-    quote: string;
-    author: string;
-    viewed_at: string;
-}
+const db = SQLite.openDatabaseSync("quotes.db");
 
 export const initializeHistoryTable = async () => {
-    const db = useSQLiteContext();
     try {
-        const createTableQuery = await db.prepareAsync(`
+        await db.execAsync(`
            CREATE TABLE IF NOT EXISTS history (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 user_id INTEGER,
@@ -18,9 +13,9 @@ export const initializeHistoryTable = async () => {
                 author TEXT NOT NULL,
                 viewed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (user_id) REFERENCES user(id)
-            )`
-        );
-        await createTableQuery.executeAsync(); // Execute the statement
+            )
+        `);
+        console.log("History table initialized.");
     } catch (error) {
         console.error("Error initializing history table:", error);
     }
@@ -28,22 +23,19 @@ export const initializeHistoryTable = async () => {
 
 
 export const addQuoteToHistory = async (quote: string, author: string) => {
-    const db = useSQLiteContext();
-
     try {
-        const insertQuery = await db.prepareAsync(
-            `INSERT INTO history (quote, author) VALUES (?, ?)`
-        );
-        await insertQuery.executeAsync({ 1: quote, 2: author });
+        await db.runAsync("INSERT OR IGNORE INTO history (quote, author) VALUES (?, ?)", [quote, author]);
+        console.log(`Inserted: "${quote}" by ${author}`);
     } catch (error) {
         console.error("Error inserting quote into history:", error);
     }
 };
 
+
 export const getHistoryQuotes = async (): Promise<HistoryQuote[]> => {
-    const db = useSQLiteContext();
     try {
         const quotes = await db.getAllAsync("SELECT * FROM history ORDER BY viewed_at DESC");
+        console.log("Fetched history quotes:", quotes);
         return quotes as HistoryQuote[];
     } catch (error) {
         console.error("Error fetching history quotes:", error);
@@ -51,7 +43,6 @@ export const getHistoryQuotes = async (): Promise<HistoryQuote[]> => {
     }
 };
 
-// Function to add some seed quotes (for testing)
 export const seedHistoryWithRandomQuotes = async () => {
     await addQuoteToHistory("The only limit to our realization of tomorrow is our doubts of today.", "Franklin D. Roosevelt");
     await addQuoteToHistory("In the middle of every difficulty lies opportunity.", "Albert Einstein");
