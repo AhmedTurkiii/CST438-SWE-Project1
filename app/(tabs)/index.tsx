@@ -56,7 +56,23 @@ export default function LoginScreen() {
         setIsLoading(false);
       }
 
+
+
     };
+
+
+    const createAccount = async () => {
+      if (!username || !password) {
+        Alert.alert("Error", "Please enter both username and password.");
+        return;
+      }
+
+      setIsLoading(true); 
+      
+  
+
+    };
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -84,6 +100,7 @@ export default function LoginScreen() {
             secureTextEntry
         />
         <Button title='Login!' onPress={userLogin}/>
+        <Button title='Create Account!' onPress={createAccount}/>
       </ThemedView>
     </ParallaxScrollView>
   );
