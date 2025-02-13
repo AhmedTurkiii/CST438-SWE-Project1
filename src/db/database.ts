@@ -25,7 +25,16 @@ export const initializeDatabase = async (db : SQLiteDatabase) => {
                 user_id INTEGER,
                 quote TEXT NOT NULL,
                 translated_quote TEXT,
-                FOREIGN KEY (user_id) REFERENCES user(id))`
+                FOREIGN KEY (user_id) REFERENCES user(id))
+            
+            CREATE TABLE IF NOT EXISTS history (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER,
+                quote TEXT NOT NULL,
+                author TEXT NOT NULL,
+                viewed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (user_id) REFERENCES user(id)
+            )`
         );
 
         // await db.runAsync(`
