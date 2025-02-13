@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform, ActivityIndicator } from 'react-native';
+import { Image, StyleSheet, Platform, ActivityIndicator, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -6,13 +6,23 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useEffect, useState } from 'react';
 import React from 'react';
+import { ScrollView, GestureHandlerRootView } from 'react-native-gesture-handler';
+
 
 const API_URL = 'https://quotes15.p.rapidapi.com/quotes/random/?language_code=en';
 const TRANSLATION_API_URL = 'https://api.mymemory.translated.net/get';
+
 const API_HEADERS = {
     'X-RapidAPI-Key': 'a5a304577amsh4a57cfe3d7f6242p1bd77bjsn25ca0059531e', 
     'X-RapidAPI-Host': 'quotes15.p.rapidapi.com',
 };
+
+const LANGUAGES = [
+    {name: "Spanish", code: "es"},
+    {name: "French", code: "fr"},
+    {name: "Portugues", code: "pt"},
+    {name: "Russian", code: "ru"},
+];
 
 export default function HomeScreen() {
     const [quote, setQuote] = useState(null);
@@ -20,6 +30,9 @@ export default function HomeScreen() {
     const [translatedQuote, setTranslatedQuote] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
+
+
 
     useEffect(() => {
         const getQuote = async () => {
@@ -29,26 +42,40 @@ export default function HomeScreen() {
                 const fetchedQuoteId = response.data.id;
                 setQuote(fetchedQuote);
                 setQuoteId(fetchedQuoteId);
-
-                // Translate the quote to French
-                const translationResponse = await axios.get(TRANSLATION_API_URL, {
-                    params: {
-                        q: fetchedQuote,
-                        langpair: 'en|es',
-                    },
-                });
-                setTranslatedQuote(translationResponse.data.responseData.translatedText);
+            
             } catch (error) {
+                console.error("Error fetching quote:", error);
                 setError('Failed to fetch quote');
             } finally {
                 setLoading(false);
             }
         };
 
+
+            
+
         getQuote();
     }, []);
 
+    const translateQuote = async (languageCode : string) => {
+        if (!quote) return;
+
+        setSelectedLanguage(languageCode);
+        setTranslatedQuote(null);
+
+        try {
+            const translationResponse = await axios.get(TRANSLATION_API_URL, {
+                params: { q: quote, langpair:  `en|${languageCode}`},
+            });
+            setTranslatedQuote(translationResponse.data.responseData.translatedText);
+        } catch(error) { 
+            console.error("Error translating quote: ", error);
+           // setTranslatedQuote("Translation failed :((");
+        }
+    };
+
     return (
+        <GestureHandlerRootView style={{ flex: 1 }}>
         <ParallaxScrollView
             headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
             headerImage={
@@ -76,11 +103,40 @@ export default function HomeScreen() {
                     <>
                         {/* <ThemedText>ID: {quoteId}</ThemedText> */}
                         <ThemedText style={styles.quoteText}>{quote}</ThemedText>
-                        <ThemedText style={styles.translatedText}>{translatedQuote}</ThemedText>
+                        {/* <ThemedText style={styles.translatedText}>{translatedQuote}</ThemedText> */}
                     </>
+                    
                 )}
             </ThemedView>
+            {/* language selection message */}
+            <ThemedView style={styles.languagePrompt}>
+                <ThemedText>Select a language to translate to: </ThemedText>
+            </ThemedView>
+
+            {/* List of language buttons fetched from API */}
+            <ThemedView style={styles.languageContainer}>
+                {LANGUAGES.map((lang) => (
+                    <TouchableOpacity
+                        key ={lang.code}
+                        style = {[styles.button, selectedLanguage === lang.code && styles.selectedButton]}
+                        onPress={() => translateQuote(lang.code)}>
+                            <ThemedText style={styles.buttonText}>{lang.name}</ThemedText>
+                    </TouchableOpacity>
+                ))}
+            </ThemedView>
+
+            {/* Display the translated Quote */}
+            {selectedLanguage && (
+                <ThemedView style={styles.translatedContainer}>
+                    {translatedQuote ? (
+                        <ThemedText style={styles.translatedText}>{translatedQuote}</ThemedText>
+                    ) : (
+                        <ActivityIndicator size="small" color="black"/>
+                    )}
+                </ThemedView>
+            )}
         </ParallaxScrollView>
+    </GestureHandlerRootView>
     );
 }
 
@@ -108,13 +164,50 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     quoteText: {
-      fontSize: 18, 
-      color: '#1E3A8A', // Dark blue for a professional and readable look
-      fontWeight: 'bold', // Emphasize the original quote
-      textAlign: 'center',
-      padding: 10,
+        fontSize: 18, 
+        color: '#1E3A8A', // Dark blue for a professional and readable look
+        fontWeight: 'bold', // Emphasize the original quote
+        textAlign: 'center',
+        padding: 10,
   },
-  
+
+     languagePrompt: {
+        marginTop: 20,
+        alignItems: "center",
+},
+    languageContainer: {
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        gap: 8,
+        marginTop: 10,
+        paddingHorizontal: 10,
+
+    },
+    button: {
+        backgroundColor: "#1E3A8A",
+        paddingVertical: 8,
+        paddingHorizontal: 14,
+        borderRadius: 8,
+        marginHorizontal: 4,
+        minWidth: 80,
+        alignItems: "center",
+},
+selectedButton: {
+    backgroundColor: "#89cff0",
+},
+buttonText: {
+    color: "white",
+    fontSize: 14,
+    fontWeight: "bold",
+},
+translatedContainer: {
+    marginTop: 20,
+    padding: 10,
+    backgroundColor: "#F3F4F6",
+    borderRadius: 10,
+    alignItems: "center",
+},
   translatedText: {
       fontSize: 16, 
       color: '#6B7280', // Soft gray for a subtle contrast
