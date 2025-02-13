@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, Platform, ActivityIndicator, TouchableOpacity, Button } from 'react-native';
 import axios from 'axios';
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -74,6 +74,14 @@ export default function HomeScreen() {
         }
     };
 
+    const addQuote = async () => {
+
+    }
+
+    const addQuoteToFavorites = async () => {
+        
+    }
+
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
         <ParallaxScrollView
@@ -90,9 +98,9 @@ export default function HomeScreen() {
                 <HelloWave />
             </ThemedView>
             <ThemedView style={styles.stepContainer}>
-                {/* <ThemedText type="subtitle">
-                    This is the page where all your favorite quotes will appear! Below is a randomly generated quote.
-                </ThemedText> */}
+            <TouchableOpacity style = {[styles.button]}> 
+                    <ThemedText style={styles.buttonText}>Add Original Quote to Favorites!</ThemedText>
+                </TouchableOpacity>
             </ThemedView>
             <ThemedView style={styles.quoteContainer}>
                 {loading ? (
@@ -107,6 +115,18 @@ export default function HomeScreen() {
                     </>
                     
                 )}
+                
+            {/* Display the translated Quote */}
+            {selectedLanguage && (
+                <ThemedView style={styles.translatedContainer}>
+                    {translatedQuote ? (
+                        <ThemedText style={styles.translatedText}>{translatedQuote}</ThemedText>
+                    ) : (
+                        <ActivityIndicator size="small" color="black"/>
+                    )}
+                    
+                </ThemedView>
+            )}
             </ThemedView>
             {/* language selection message */}
             <ThemedView style={styles.languagePrompt}>
@@ -125,7 +145,7 @@ export default function HomeScreen() {
                 ))}
             </ThemedView>
 
-            {/* Display the translated Quote */}
+            {/* Display the translated Quote
             {selectedLanguage && (
                 <ThemedView style={styles.translatedContainer}>
                     {translatedQuote ? (
@@ -133,8 +153,10 @@ export default function HomeScreen() {
                     ) : (
                         <ActivityIndicator size="small" color="black"/>
                     )}
+                    
                 </ThemedView>
-            )}
+            )} */}
+            
         </ParallaxScrollView>
     </GestureHandlerRootView>
     );
@@ -210,12 +232,12 @@ translatedContainer: {
 },
   translatedText: {
       fontSize: 16, 
-      color: '#6B7280', // Soft gray for a subtle contrast
-      fontStyle: 'italic', // Differentiate translation with italics
+      color: '#6B7280',
+      fontStyle: 'italic',
       textAlign: 'center',
       padding: 10,
-      backgroundColor: '#F3F4F6', // Light gray background for a distinct separation
-      borderRadius: 8, // Soft rounded corners
+      backgroundColor: '#F3F4F6', 
+      borderRadius: 8, 
   },
   
 });
