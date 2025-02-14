@@ -33,16 +33,15 @@ export default function LoginScreen() {
       Alert.alert("Error", "Please enter both username and password.");
       return;
     }
-
     setIsLoading(true); // Show loading state
-
+// Check if there's a username and if there's no username
+    // create a checker for the userLogin
     try {
       const user = (await db.getFirstAsync('SELECT * FROM user WHERE username = ?', [username])) as User;
       if (!user) {
         Alert.alert("Error", "Invalid username.");
         return;
       }
-
       if (user.password === password) {
         await AsyncStorage.setItem('isAuthenticated', 'true');
         router.replace('/(tabs)/home');
@@ -55,23 +54,63 @@ export default function LoginScreen() {
       } finally {
         setIsLoading(false);
       }
-
-
-
     };
-
-
     const createAccount = async () => {
       if (!username || !password) {
         Alert.alert("Error", "Please enter both username and password.");
         return;
       }
+      setIsLoading(true);
+      try {
+        const user = (await db.getFirstAsync('SELECT * FROM user WHERE username = ?', [username])) as User;
+        if (user) {
+          Alert.alert("Error", "username already exists, please enter a new one");
+          return;
+        }
+      } catch (error) {
+        console.error("Authentication Error:", error);
+        Alert.alert("Error", "An error occurred during authentication.");
+      } finally {
+        setIsLoading(false);
+      }
 
-      setIsLoading(true); 
-      
-  
+      const UserDeletion = () => {
+        const [username, setUserName] = useState<User | null>(null);
+
+        const loadUser = async () => {
+          try {
+            const storedUser = await AsyncStorage.getItem('username');
+            if (storedUser) { ///await db.getFirstAsync('SELECT * FROM user WHERE username = ?', [username])) as User;
+              setUserName(JSON.parse(storedUser));
+            }
+          } catch (error) {
+            console.error("Error loading user:", error);
+            Alert.alert("Error", "Failed to load user data.");
+          } finally {
+            setIsLoading(false);
+          }
+
+        };
+
+        const deleteUser = async () => {
+          try {
+            await AsyncStorage.removeItem('user');
+            setUserName(null);
+            Alert.alert("Success", "User deleted successfully.");
+          } catch (error) {
+            console.error("Error deleting user:", error);
+            Alert.alert("Error", "Failed to delete user.");
+          }
+        };
+
+      };
+
+
+
 
     };
+
+
 
   return (
     <ParallaxScrollView
@@ -101,6 +140,7 @@ export default function LoginScreen() {
         />
         <Button title='Login!' onPress={userLogin}/>
         <Button title='Create Account!' onPress={createAccount}/>
+        <Button title="userdeletion!" onPress={UserDeletion }/>
       </ThemedView>
     </ParallaxScrollView>
   );
