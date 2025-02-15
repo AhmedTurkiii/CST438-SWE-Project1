@@ -33,16 +33,15 @@ export default function LoginScreen() {
       Alert.alert("Error", "Please enter both username and password.");
       return;
     }
-
     setIsLoading(true); // Show loading state
-
+// Check if there's a username and if there's no username
+    // create a checker for the userLogin
     try {
       const user = (await db.getFirstAsync('SELECT * FROM user WHERE username = ?', [username])) as User;
       if (!user) {
         Alert.alert("Error", "Invalid username.");
         return;
       }
-
       if (user.password === password) {
         await AsyncStorage.setItem('isAuthenticated', 'true');
         router.replace('/(tabs)/home');
@@ -55,9 +54,6 @@ export default function LoginScreen() {
       } finally {
         setIsLoading(false);
       }
-
-
-
     };
 
 
@@ -66,12 +62,35 @@ export default function LoginScreen() {
         Alert.alert("Error", "Please enter both username and password.");
         return;
       }
+      setIsLoading(true);
+      try {
+        const ExistingUser = (await db.getFirstAsync('SELECT * FROM user WHERE username = ?', [username])) as User;
+        if (ExistingUser) {
+          Alert.alert("Error", "username already exists, please enter a new one");
+          return;
+        }
 
-      setIsLoading(true); 
-      
-  
+        const insertNewUser = await db.prepareAsync('INSERT INTO user(username, password) VALUES (?,?)');
+        await insertNewUser.executeAsync([username, password]);
+
+        Alert.alert("Success", "Account has been created." );
+        await AsyncStorage.setItem('isAuthenticated', 'true');
+        router.replace('/(tabs)/home');
+
+      } catch (error) {
+        console.error("error creating user account: ", error);
+        Alert.alert("Error", "There was an issue creating the account");
+      }
+
+      finally {
+        setIsLoading(false);
+      }
+
+
 
     };
+
+
 
   return (
     <ParallaxScrollView
