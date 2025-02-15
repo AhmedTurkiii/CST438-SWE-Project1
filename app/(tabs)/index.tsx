@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { initializeDatabase} from '@/src/db/database';
 import { useSQLiteContext } from 'expo-sqlite';
 import { User } from '@/src/types/userInfo';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 
@@ -74,6 +75,11 @@ export default function LoginScreen() {
     };
 
   return (
+    <LinearGradient
+    colors={['#04A4FC', '#31ABFC']} // Your gradient colors
+    style={styles.gradientContainer} // Ensure gradient covers the full screen
+  >
+
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
@@ -83,7 +89,8 @@ export default function LoginScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome to QuoteLingo! Please Login or Create an Account!</ThemedText>
+        <ThemedText type="title">Welcome to QuoteLingo!{'\n'}Please Login or Create an Account!</ThemedText>
+
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         <TextInput
@@ -103,10 +110,15 @@ export default function LoginScreen() {
         <Button title='Create Account!' onPress={createAccount}/>
       </ThemedView>
     </ParallaxScrollView>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
+  gradientContainer: {
+    flex: 1, 
+  },
+
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
