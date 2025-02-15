@@ -55,6 +55,8 @@ export default function LoginScreen() {
         setIsLoading(false);
       }
     };
+
+
     const createAccount = async () => {
       if (!username || !password) {
         Alert.alert("Error", "Please enter both username and password.");
@@ -62,49 +64,27 @@ export default function LoginScreen() {
       }
       setIsLoading(true);
       try {
-        const user = (await db.getFirstAsync('SELECT * FROM user WHERE username = ?', [username])) as User;
-        if (user) {
+        const ExistingUser = (await db.getFirstAsync('SELECT * FROM user WHERE username = ?', [username])) as User;
+        if (ExistingUser) {
           Alert.alert("Error", "username already exists, please enter a new one");
           return;
         }
+
+        const insertNewUser = await db.prepareAsync('INSERT INTO user(username, password) VALUES (?,?)');
+        await insertNewUser.executeAsync([username, password]);
+
+        Alert.alert("Success", "Account has been created." );
+        await AsyncStorage.setItem('isAuthenticated', 'true');
+        router.replace('/(tabs)/home');
+
       } catch (error) {
-        console.error("Authentication Error:", error);
-        Alert.alert("Error", "An error occurred during authentication.");
-      } finally {
-        setIsLoading(false);
+        console.error("error creating user account: ", error);
+        Alert.alert("Error", "There was an issue creating the account");
       }
 
-      const UserDeletion = () => {
-        const [username, setUserName] = useState<User | null>(null);
-
-        const loadUser = async () => {
-          try {
-            const storedUser = await AsyncStorage.getItem('username');
-            if (storedUser) { ///await db.getFirstAsync('SELECT * FROM user WHERE username = ?', [username])) as User;
-              setUserName(JSON.parse(storedUser));
-            }
-          } catch (error) {
-            console.error("Error loading user:", error);
-            Alert.alert("Error", "Failed to load user data.");
-          } finally {
-            setIsLoading(false);
-          }
-
-        };
-
-        const deleteUser = async () => {
-          try {
-            await AsyncStorage.removeItem('user');
-            setUserName(null);
-            Alert.alert("Success", "User deleted successfully.");
-          } catch (error) {
-            console.error("Error deleting user:", error);
-            Alert.alert("Error", "Failed to delete user.");
-          }
-        };
-
-      };
-
+      finally {
+        setIsLoading(false);
+      }
 
 
 
@@ -140,7 +120,6 @@ export default function LoginScreen() {
         />
         <Button title='Login!' onPress={userLogin}/>
         <Button title='Create Account!' onPress={createAccount}/>
-        <Button title="userdeletion!" onPress={UserDeletion }/>
       </ThemedView>
     </ParallaxScrollView>
   );
