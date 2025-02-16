@@ -170,13 +170,13 @@ export default function HomeScreen() {
     onPress={() => quote && addQuoteToFavorites(db, quote, translatedQuote)}
 >
     <ThemedText style={styles.buttonText}>Add to Favorites</ThemedText>
-</TouchableOpacity>
-                <TouchableOpacity 
+</TouchableOpacity>r
+                {/* <TouchableOpacity 
     style={styles.button} 
     onPress={() => quoteId && addQuote(db, quote!, translatedQuote, quoteId)}
 >
     <ThemedText style={styles.buttonText}>Save Quote</ThemedText>
-</TouchableOpacity>
+</TouchableOpacity> */}
 
             </ThemedView>
             <ThemedView style={styles.quoteContainer}>
