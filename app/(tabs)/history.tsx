@@ -1,97 +1,82 @@
-import { Image, StyleSheet, Platform, TouchableOpacity, Linking } from 'react-native';
-
+import { Image, StyleSheet, TouchableOpacity, FlatList, SafeAreaView, View } from "react-native";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { getHistoryQuotes, initializeHistoryTable, seedHistoryWithRandomQuotes } from "@/src/db/history_table";
+import type { HistoryQuote } from "@/src/types/historyQuote";
 
-export default function HomeScreen() {
-  const quoteButton = () => {
-    Linking.openURL('https://example.com'); 
-  };
-  const quoteButton2 = () => {
-    Linking.openURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ'); 
-  };
+export default function HistoryScreen() {
+    const [historyQuotes, setHistoryQuotes] = useState<HistoryQuote[]>([]);
 
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/Designer-2.jpeg')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Quote History</ThemedText>
-      </ThemedView>
+    useEffect(() => {
+        const fetchHistoryQuotes = async () => {
+            await initializeHistoryTable(); 
+            await seedHistoryWithRandomQuotes(); 
+            const storedQuotes = await getHistoryQuotes();
+            setHistoryQuotes(storedQuotes);
+        };
+    
+        fetchHistoryQuotes();
+    }, []);
+    
 
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Here you will find all the quotes you have seen.</ThemedText>
-      </ThemedView>
+    return (
+       <ParallaxScrollView
+             headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+             headerImage={
+               <Image
+                 source={require('@/assets/images/QuoteLingo_Logo.jpeg')}
+                 style={styles.reactLogo}
+               />
+             }>
+            <ThemedView style={styles.titleContainer}>
+                <ThemedText type="title">Quote History</ThemedText>
+            </ThemedView>
 
-      <ThemedView style={styles.quoteContainer}>
-        <TouchableOpacity onPress={quoteButton}>
-          <ThemedText type="default" style={styles.quoteText}>
-            "Quotes go here"
-          </ThemedText>
-        </TouchableOpacity>
+            <FlatList
+            data={historyQuotes}
+            keyExtractor={(item) => item.id.toString()}
+            nestedScrollEnabled={true}
+            renderItem={({ item }) => (
+                <View style={styles.quoteContainer}>
+                    <ThemedText type="default" style={styles.quoteText}>
+                        Quote: "{item.quote}" - {item.author}
+                    </ThemedText>
+                </View>
+            )}
+            />
 
-      </ThemedView>
-      <ThemedView style={styles.quoteContainer}>
-        <TouchableOpacity onPress={quoteButton2}>
-          <ThemedText type="default" style={styles.quoteText}>
-            "This is a really long pile of text just to see how the TouchableOpacity will 
-            look when it is really sctreched out for a bigger quote. DO NOT and I repeat DO NOT CLICK ME"
-          </ThemedText>
-        </TouchableOpacity>
-      </ThemedView>
-
-      <ThemedView style={styles.quoteContainer}>
-        <TouchableOpacity onPress={quoteButton}>
-          <ThemedText type="default" style={styles.quoteText}>
-            "Quotes go here"
-          </ThemedText>
-        </TouchableOpacity>
-      </ThemedView>
-
-      <ThemedView style={styles.quoteContainer}>
-        <TouchableOpacity onPress={quoteButton}>
-          <ThemedText type="default" style={styles.quoteText}>
-            "Quotes go here"
-          </ThemedText>
-        </TouchableOpacity>
-      </ThemedView>
-      
-    </ParallaxScrollView>
-  );
+        </ParallaxScrollView>
+    );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 250,
-    width: 410,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-  quoteContainer: {
-    margin: 0.1,
-    padding: 5,
-    backgroundColor: '#89cff0',
-    borderRadius: 10,
-  },
-  quoteText: {
-    fontSize: 16,
-    color: '#333',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: "#FFF",
+    },
+    titleContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 8,
+        padding: 16,
+    },
+    reactLogo: {
+        height: 250,
+        width: 410,
+        bottom: 0,
+        left: 0,
+        position: 'absolute',
+      },
+    quoteContainer: {
+        margin: 10,
+        padding: 15,
+        backgroundColor: "#89cff0",
+        borderRadius: 10,
+    },
+    quoteText: {
+        fontSize: 16,
+        color: "#333",
+    },
 });
