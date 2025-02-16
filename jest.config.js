@@ -6,7 +6,7 @@ module.exports = {
       '^@/(.*)$': '<rootDir>/$1',
     },
     transformIgnorePatterns: [
-            'node_modules/(?!(expo-modules-core|@react-native|react-native|expo)/)',
+      "node_modules/(?!(expo-sqlite|react-native-reanimated|react-native|expo-modules-core)/)"
     ],
   };
   module.exports = {
@@ -15,4 +15,6 @@ module.exports = {
       'node_modules/(?!(expo-modules-core|@react-native|react-native|expo)/)',
     ],
   };
+
+  
   

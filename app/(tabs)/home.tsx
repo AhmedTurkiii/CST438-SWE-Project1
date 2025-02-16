@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform, ActivityIndicator, TouchableOpacity, Button } from 'react-native';
+import { Image, StyleSheet, Platform, ActivityIndicator, TouchableOpacity, Button, Text } from 'react-native';
 import axios from 'axios';
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -7,6 +7,10 @@ import { ThemedView } from '@/components/ThemedView';
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { ScrollView, GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SQLiteDatabase } from 'expo-sqlite';
+import { initializeDatabase } from '@/src/db/database';
+import * as SQLite from 'expo-sqlite';
+
 
 
 const API_URL = 'https://quotes15.p.rapidapi.com/quotes/random/?language_code=en';
@@ -23,6 +27,10 @@ const LANGUAGES = [
     {name: "Portugues", code: "pt"},
     {name: "Russian", code: "ru"},
 ];
+const db = SQLite.openDatabaseSync("database.db");
+if (!db) {
+    console.error("Database failed to open.");
+}
 
 export default function HomeScreen() {
     const [quote, setQuote] = useState(null);
@@ -35,6 +43,12 @@ export default function HomeScreen() {
 
 
     useEffect(() => {
+        if (db) {
+            initializeDatabase(db);
+        } else {
+            console.error("Database not initialized.");
+        }
+
         const getQuote = async () => {
             try {
                 const response = await axios.get(API_URL, { headers: API_HEADERS });
@@ -74,14 +88,67 @@ export default function HomeScreen() {
         }
     };
 
-    const addQuote = async () => {
+    const addQuote = async (db: SQLiteDatabase, quote: string, translatedQuote: string | null, quoteId: string) => {
+        if (!quote) {
+            console.error("No quote to add.");
+            return;
+        }
+    
+        try {
+            await db.runAsync(
+                `INSERT INTO quote (user_id, original_quote, translated_quote, quote_api_id) 
+                 VALUES (?, ?, ?, ?)`,
+                [1, quote, translatedQuote || null, quoteId]
+            );
+    
+            console.log("Quote added successfully!");
+    
+            // Fetch the last saved quote
+            const lastSaved = await db.getFirstAsync(
+                `SELECT * FROM quote ORDER BY id DESC LIMIT 1`
+            );
+    
+            if (lastSaved) {
+                console.log("Last saved quote:", lastSaved);
+  
+            }
+    
+        } catch (error) {
+            console.error("Error adding quote:", error);
+        }
+    };
+    
+    
 
-    }
+    const addQuoteToFavorites = async (db: SQLiteDatabase, quote: string, translatedQuote: string | null) => {
+        if (!quote) {
+            console.error("No quote to add to favorites.");
+            return;
+        }
+    
+        try {
+            await db.runAsync(
+                `INSERT INTO favorites (user_id, quote, translated_quote) 
+                 VALUES (?, ?, ?)`,
+                [1, quote, translatedQuote || null]
+            );
+    
+            console.log("Quote added to favorites!");
+    
+            // Fetch the last saved favorite
+            const lastFavorite = await db.getFirstAsync(
+                `SELECT * FROM favorites ORDER BY id DESC LIMIT 1`
+            );
+    
+            if (lastFavorite) {
+                console.log("Last saved favorite:", lastFavorite);
 
-    const addQuoteToFavorites = async () => {
-        
-    }
-
+            }
+    
+        } catch (error) {
+            console.error("Error adding quote to favorites:", error);
+        }
+    };
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
         <ParallaxScrollView
@@ -98,9 +165,19 @@ export default function HomeScreen() {
                 <HelloWave />
             </ThemedView>
             <ThemedView style={styles.stepContainer}>
-            <TouchableOpacity style = {[styles.button]}> 
-                    <ThemedText style={styles.buttonText}>Add Original Quote to Favorites!</ThemedText>
-                </TouchableOpacity>
+            <TouchableOpacity 
+    style={styles.button} 
+    onPress={() => quote && addQuoteToFavorites(db, quote, translatedQuote)}
+>
+    <ThemedText style={styles.buttonText}>Add to Favorites</ThemedText>
+</TouchableOpacity>
+                <TouchableOpacity 
+    style={styles.button} 
+    onPress={() => quoteId && addQuote(db, quote!, translatedQuote, quoteId)}
+>
+    <ThemedText style={styles.buttonText}>Save Quote</ThemedText>
+</TouchableOpacity>
+
             </ThemedView>
             <ThemedView style={styles.quoteContainer}>
                 {loading ? (
@@ -241,3 +318,9 @@ translatedContainer: {
   },
   
 });
+
+
+function openDatabase(arg0: string) {
+    throw new Error('Function not implemented.');
+}
+
