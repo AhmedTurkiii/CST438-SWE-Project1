@@ -72,10 +72,6 @@ export default function LoginScreen() {
         const insertNewUser = await db.prepareAsync('INSERT INTO user(username, password) VALUES (?,?)');
         await insertNewUser.executeAsync([username, password]);
 
-        const userId = await db.getFirstAsync('SELECT id FROM  user WHERE username = ?', [username]);
-
-        
-
         Alert.alert("Success", "Account has been created." );
         await AsyncStorage.setItem('isAuthenticated', 'true');
         router.replace('/(tabs)/home');
