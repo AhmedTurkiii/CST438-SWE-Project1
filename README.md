@@ -1,63 +1,112 @@
-# Welcome to your Expo app 👋
+# Project 01 Retrospective and overview
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## Authors
+[Github Repo]([https://github.com/dclinkenbeard/MyDemoApplication](https://github.com/AhmedTurkiii/CST438-SWE-Project1))
 
-Contributors names and contact info
+## Overview
 
-1- Ahmed Torki
 
-2- Alexia Leon Lopez
+QuoteLingo is an application intended to help users learn other languages by providing quotes fetched from this [API](https://rapidapi.com/martin.svoboda/api/quotes15). Users are able to translate the quote to a few different languages and save some of their favorite quotes to look back on later. 
 
-3- Jonathan	Ramirez-Fausto
+## Introduction
 
-4- Rull Mendez
+* How was communication managed
+* How many stories/issues were initially considered
+* How many stories/issues were completed
 
-## Get started
+## Team Retrospective
 
-1. Install dependencies
+### Team Member name
 
-   ```bash
-   npm install
-   ```
+- [Ahmed Torki](https://github.com/AhmedTurkiii/CST438-SWE-Project1/tree/torki_branch)
+- [Alexia Leon](https://github.com/AhmedTurkiii/CST438-SWE-Project1/tree/leon_branch)
+- [Jonathan Ramirez](https://github.com/AhmedTurkiii/CST438-SWE-Project1/tree/JR_Branch2)
+- [RUll Mendez](https://github.com/AhmedTurkiii/CST438-SWE-Project1/tree/Rull_branch)
 
-2. Start the app
+#### What was your role / which stories did you work on
 
-   ```bash
-    npx expo start
-   ```
+#### Ahmed Torki
++ What was the biggest challenge? 
++ Why was it a challenge?
+  + How was the challenge addressed?
++ Favorite / most interesting part of this project
++ If you could do it over, what would you change?
++ What is the most valuable thing you learned?
 
-In the output, you'll find options to open the app in a
+#### Alexia Leon
++ What was the biggest challenge? 
++ Why was it a challenge?
+  + How was the challenge addressed?
++ Favorite / most interesting part of this project
++ If you could do it over, what would you change?
++ What is the most valuable thing you learned?
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+#### Jonathan Ramirez
++ What was the biggest challenge? 
++ Why was it a challenge?
+  + How was the challenge addressed?
++ Favorite / most interesting part of this project
++ If you could do it over, what would you change?
++ What is the most valuable thing you learned?
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+#### Rull Mendez
++ What was the biggest challenge? 
++ Why was it a challenge?
+  + How was the challenge addressed?
++ Favorite / most interesting part of this project
++ If you could do it over, what would you change?
++ What is the most valuable thing you learned?
 
-## Get a fresh project
 
-When you're ready, run:
 
-```bash
-npm run reset-project
-```
+### Carol Danvers
+1. Carol's pull requests are [here]([https://github.com/Jonathan-Welham/Bits-Bots/pulls/@CarolDanvers](https://github.com/AhmedTurkiii/CST438-SWE-Project1/pulls?q=is%3Apr+author%3AAhmedTurkiii+is%3Aclosed))
+1. Carol's Github issues are [here](https://github.com/FedericoRubino/cst438_project2/issues/created_by/@FedericoRubino)
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Ahmed Torki
+1. Ahmed's pull requests are [here](https://github.com/Jonathan-Welham/Bits-Bots/pulls/@CarolDanvers)
+1. Ahmed's Github issues are [here](https://github.com/FedericoRubino/cst438_project2/issues/created_by/@FedericoRubino)
 
-## Learn more
+### Alexia Leon
+1. Alexia's pull requests are [here](insert link here)
+1. Alexia's Github issues are [here](insert link here)
 
-To learn more about developing your project with Expo, look at the following resources:
+### Jonathan Ramirez
+1. Jonathan's pull requests are [here](insert link here)
+1. Jonathan's Github issues are [here](insert link here)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Rull Mendez
+1. Rull's pull requests are [here](insert link here)
+1. Rull's Github issues are [here](insert link here)
 
-## Join the community
+#### What was your role / which stories did you work on
+Carol mostly worked on getting the app to run faster, better, and higher.  She did the best work possible but her contributions were overpowered and not well received by the fans.
 
-Join our community of developers creating universal apps.
+### Ahmed Torki
+### Alexia Leon
+Alexia worked on the creation of the favorites page, and making the API fetch the quotes. She also created the login page, created the Database, and worked on the userLogin function. Alexia also helped display the translated quotes on the home page. 
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### Jonathan Ramirez
+### Rull Mendez
 
+
++ What was the biggest challenge? 
+  + Managing pull requests and merges
++ Why was it a challenge?
+  + We were all new to git/github and not everyone followed convention
+  + How was the challenge addressed?
+  + I went to the TA for help and used ChatGPT and web resources to get more comfortable with git.
++ Favorite / most interesting part of this project
+  + Finally getting the IDs from the API calls to store in the ROOM database
++ If you could do it over, what would you change?
+  + I would get the ROOM database setup FIRST
++ What is the most valuable thing you learned?
+  + Do the work early and document EVERYTHING
+
+
+## Conclusion
+
+- How successful was the project?
+  - Think in terms of what did you set out to do and what actually got done?
+- What was the largest victory?
+- Final assessment of the project
