@@ -1,14 +1,11 @@
 //login page: 
-import { Image, StyleSheet, Platform, ActivityIndicator, View, Text, TextInput, Button, Alert, } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity, View, Text, TextInput, Button, Alert, } from 'react-native';
 import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { initializeDatabase} from '@/src/db/database';
 import { useSQLiteContext } from 'expo-sqlite';
 import { User } from '@/src/types/userInfo';
 import { LinearGradient } from 'expo-linear-gradient';
-
-
-
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -34,18 +31,18 @@ export default function LoginScreen() {
       Alert.alert("Error", "Please enter both username and password.");
       return;
     }
-
     setIsLoading(true); // Show loading state
-
+// Check if there's a username and if there's no username
+    // create a checker for the userLogin
     try {
       const user = (await db.getFirstAsync('SELECT * FROM user WHERE username = ?', [username])) as User;
       if (!user) {
         Alert.alert("Error", "Invalid username.");
         return;
       }
-
       if (user.password === password) {
         await AsyncStorage.setItem('isAuthenticated', 'true');
+        await AsyncStorage.setItem('userId', user.id.toString());
         router.replace('/(tabs)/home');
       }else {
         Alert.alert("Login Failed", "Incorrect password.");
@@ -56,9 +53,6 @@ export default function LoginScreen() {
       } finally {
         setIsLoading(false);
       }
-
-
-
     };
 
 
@@ -67,18 +61,47 @@ export default function LoginScreen() {
         Alert.alert("Error", "Please enter both username and password.");
         return;
       }
+      setIsLoading(true);
+      try {
+        const ExistingUser = (await db.getFirstAsync('SELECT * FROM user WHERE username = ?', [username])) as User;
+        if (ExistingUser) {
+          Alert.alert("Error", "username already exists, please enter a new one");
+          return;
+        }
 
-      setIsLoading(true); 
-      
-  
+        const insertNewUser = await db.prepareAsync('INSERT INTO user(username, password) VALUES (?,?)');
+        await insertNewUser.executeAsync([username, password]);
+
+        const userId = await db.getFirstAsync('SELECT id FROM  user WHERE username = ?', [username]);
+
+        
+
+        Alert.alert("Success", "Account has been created." );
+        await AsyncStorage.setItem('isAuthenticated', 'true');
+        router.replace('/(tabs)/home');
+
+      } catch (error) {
+        console.error("error creating user account: ", error);
+        Alert.alert("Error", "There was an issue creating the account");
+      }
+
+      finally {
+        setIsLoading(false);
+      }
+
+
 
     };
 
+
+
   return (
+    
     <LinearGradient
-    colors={['#04A4FC', '#31ABFC']} // Your gradient colors
+    colors={['#04A4FC', 'white']} // Your gradient colors
     style={styles.gradientContainer} // Ensure gradient covers the full screen
-  >
+    >
+  <View style={{ flex: 1 }}>
 
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -89,7 +112,7 @@ export default function LoginScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome to QuoteLingo!{'\n'}Please Login or Create an Account!</ThemedText>
+        <ThemedText type="title" style={styles.themedText}>Welcome to QuoteLingo!{'\n'}Please Login or Create an Account!</ThemedText>
 
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
@@ -106,11 +129,13 @@ export default function LoginScreen() {
             style={styles.input}
             secureTextEntry
         />
-        <Button title='Login!' onPress={userLogin}/>
-        <Button title='Create Account!' onPress={createAccount}/>
+            <TouchableOpacity style={styles.loginButton} onPress={userLogin}><Text style={styles.buttonText}>Login</Text></TouchableOpacity>
+            <TouchableOpacity style={styles.createAccButton} onPress={createAccount}><Text style={styles.buttonTextSecondary}>Create Account</Text></TouchableOpacity>
       </ThemedView>
     </ParallaxScrollView>
+    </View>
     </LinearGradient>
+
   );
 }
 
@@ -123,10 +148,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+   backgroundColor: 'transparent'
   },
   stepContainer: {
     gap: 8,
     marginBottom: 8,
+    backgroundColor: 'transparent'
   },
   reactLogo: {
     height: 250,
@@ -134,13 +161,53 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: 'absolute',
+
+  },
+  themedText: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#333',
+    marginBottom: 20,
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 3,
   },
 
   input: {
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
+    height: 50,
+    borderWidth: 0,
+    borderRadius: 10,
+    backgroundColor: 'rgba(255,255,255,0.8)',
     marginBottom: 15,
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
+    fontSize: 16,
+    width: '100%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 5,
   },
+
+  loginButton: {
+    backgroundColor: '#1E90FF', 
+    paddingVertical: 15, 
+    borderRadius: 10, 
+    width: '100%', 
+    alignItems: 'center', 
+    marginBottom: 10,
+  },
+  createAccButton: {
+    borderColor: '#1E90FF', 
+    borderWidth: 2, 
+    paddingVertical: 15, 
+    borderRadius: 10, 
+    width: '100%', 
+    alignItems: 'center',
+  },
+
+  buttonText: { color: '#fff', fontSize: 16, fontWeight: '600' },
+  
+  buttonTextSecondary: { color: '#1E90FF', fontSize: 16, fontWeight: '600' },
 });
