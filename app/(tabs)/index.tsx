@@ -92,6 +92,14 @@ export default function LoginScreen() {
 
         Alert.alert("Success", "Account has been created." );
         await AsyncStorage.setItem('isAuthenticated', 'true');
+            // Get the new user id after insert
+    const newUser = (await db.getFirstAsync('SELECT * FROM user WHERE username = ?', [username])) as User;
+    if (newUser && newUser.id) {
+      // Set the user id globally
+      await AsyncStorage.setItem('isAuthenticated', 'true');
+      await AsyncStorage.setItem('user_id', newUser.id.toString());
+      setUserId(newUser.id.toString());  // Update the global user id in context
+    }
         router.replace('/(tabs)/home');
 
       } catch (error) {

@@ -14,6 +14,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter, SearchParams, router } from 'expo-router';
 import { View } from 'react-native';
 import { useSearchParams } from 'expo-router/build/hooks';
+import { useUser } from '@/context/UserContext';
 
 
 
@@ -48,12 +49,9 @@ export default function HomeScreen() {
     const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
 
 
-    const searchParams = useSearchParams();
-    const user_id = searchParams.get('user_id'); // Access the user_id query parameter
-    
+    const { user_id } = useUser();
     console.log('User ID on Home screen:', user_id); 
     useEffect(() => {
-        // router.push(`/history?user_id=${user_id}`);
 
         if (db) {
             initializeDatabase(db);

@@ -75,6 +75,10 @@ export default function FavoriteQuotes() {
       fetchFavoriteQuotes();
     }, [])
   );
+  useEffect(() => {
+    // Fetch quotes when page is opened (like on initial load)
+    fetchFavoriteQuotes();
+  }, []);
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>

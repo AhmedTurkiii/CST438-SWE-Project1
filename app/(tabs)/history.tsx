@@ -23,10 +23,8 @@ export default function HistoryScreen() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     
-    // const searchParams = useSearchParams();
-    // const user_id = searchParams.get('user_id'); // Get the user_id from the URL query parameters
-    const { user_id } = useUser();
 
+    const { user_id } = useUser();
     console.log('User ID on History screen:', user_id);
 
     useEffect(() => {
@@ -39,10 +37,16 @@ export default function HistoryScreen() {
         const fetchQuotes = async () => {
             try {
                 const result = await db.getAllAsync(
-                    `SELECT * FROM quote WHERE user_id = ? ORDER BY id DESC`,
-                    [user_id]
-                );
+                    `SELECT * FROM quote
+                    WHERE user_id = ?
+                    AND translated_quote IN (
+                        SELECT DISTINCT translated_quote FROM quote WHERE user_id = ?
+                    )
+                    ORDER BY id DESC`, 
+                   [user_id, user_id]
+               );
                 setQuotes(result);
+                console.log('Quotes:', result);
             } catch (error) {
                 console.error('Error fetching quotes:', error);
                 setError('Failed to load quotes.');
