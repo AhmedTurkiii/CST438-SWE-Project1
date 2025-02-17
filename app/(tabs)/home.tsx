@@ -5,7 +5,7 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useEffect, useState } from 'react';
 import React from 'react';
-import { ScrollView, GestureHandlerRootView } from 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SQLiteDatabase } from 'expo-sqlite';
 import { initializeDatabase } from '@/src/db/database';
 import * as SQLite from 'expo-sqlite';
@@ -177,22 +177,12 @@ export default function HomeScreen() {
                 <ThemedText type="title" style={styles.titleText}>Welcome to Quotelingo! 🌍✨{'\n'}Learn languages by translating daily quotes.</ThemedText>
             </ThemedView>
             <ThemedView style={styles.stepContainer}>
-            <TouchableOpacity style = {[styles.button]}> 
-                    <ThemedText style={styles.buttonText}>❤️Add Original Quote to Favorites!❤️</ThemedText>
-                </TouchableOpacity>
             <TouchableOpacity 
     style={styles.button} 
     onPress={() => quote && addQuoteToFavorites(db, quote, translatedQuote)}
 >
-    <ThemedText style={styles.buttonText}>Add to Favorites</ThemedText>
-</TouchableOpacity>r
-                {/* <TouchableOpacity 
-    style={styles.button} 
-    onPress={() => quoteId && addQuote(db, quote!, translatedQuote, quoteId)}
->
-    <ThemedText style={styles.buttonText}>Save Quote</ThemedText>
-</TouchableOpacity> */}
-
+    <ThemedText style={styles.buttonText}>❤️Add Original Quote to Favorites!❤️</ThemedText>
+</TouchableOpacity>
             </ThemedView>
         
             <ThemedView style={styles.quoteContainer}>

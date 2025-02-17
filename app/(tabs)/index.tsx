@@ -1,16 +1,12 @@
 //login page: 
 import { Image, StyleSheet, TouchableOpacity, View, Text, TextInput, Button, Alert, } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useFocusEffect, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { initializeDatabase} from '@/src/db/database';
 import { useSQLiteContext } from 'expo-sqlite';
 import { User } from '@/src/types/userInfo';
 import { LinearGradient } from 'expo-linear-gradient';
-
 import { useUser } from "@/context/UserContext"; // Import the useUser hook
-// import { setUserId } from "@/context/UserContext"; // Import the setUserId function
-
-
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -27,21 +23,26 @@ export default function LoginScreen() {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   
-
+//initializes database
   useEffect(() => {
     initializeDatabase(db);
   }, [db]);
   
-  
+  //will reset username and password fields
+  useFocusEffect(
+    React.useCallback(() => {
+      setUserName('');  
+      setPassword('');  
+    }, [])
+  );
+  //function that checks user login
   const userLogin = async () => {
       
     if (!username || !password) {
       Alert.alert("Error", "Please enter both username and password.");
       return;
     }
-    setIsLoading(true); // Show loading state
-// Check if there's a username and if there's no username
-    // create a checker for the userLogin
+    setIsLoading(true);
     try {
       const user = (await db.getFirstAsync('SELECT * FROM user WHERE username = ?', [username])) as User;
       if (!user) {
@@ -53,8 +54,8 @@ export default function LoginScreen() {
 
         if (user.id !== undefined) {
           await AsyncStorage.setItem('user_id', user.id.toString());
-          console.log('User ID:', user.id);  // Add this line to log the user ID
-          setUserId(user.id.toString());  // Update the global user ID
+          console.log('User ID:', user.id);  //logs the user ID
+          setUserId(user.id.toString());  // Updates the global user ID
 
         } else {
           Alert.alert("Error", "User ID is undefined.");
@@ -229,7 +230,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  buttonText: { color: '#fff', fontSize: 16, fontWeight: '600' },
+  buttonText: { 
+    color: '#fff', 
+    fontSize: 16, 
+    fontWeight: '600' 
+  },
   
-  buttonTextSecondary: { color: '#1E90FF', fontSize: 16, fontWeight: '600' },
+  buttonTextSecondary: { 
+    color: '#1E90FF', 
+    fontSize: 16, 
+    fontWeight: '600' 
+  },
 });
