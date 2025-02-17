@@ -35,19 +35,20 @@ QuoteLingo is an application intended to help users learn other languages by pro
 + What is the most valuable thing you learned?
 
 #### Alexia Leon
-I worked on creating the favorites page, and fetching quotes through the API. I helped create the login page and connected it to the database to allow for user login. 
+I worked on developing the Favorites page and implementing API functionality to fetch quotes. I also helped build the login page, connecting it to the database for user authentication, and played a role in setting up the database and creating the user table. 
 
 + What was the biggest challenge?
-   + I think the biggest challenge for me was having to build this project while also having to learn how to use React. 
+   + The biggest challenge for me was building the project while also learning how to use React. 
 + Why was it a challenge?
-   +  This was a challenge because we only had three weeks to not only work on our project, but also figure out how to use React.
+   + It was challenging because we had only three weeks to not only complete the project but also learn how to effectively use React.
   + How was the challenge addressed?
-   + I was constantly looking online for resources on how to use React.  
+   +To tackle this, I constantly searched for online resources and tutorials to help me understand React and its best practices 
 + Favorite / most interesting part of this project
-   + I'd say my favorite part of this project was 
+   + My favorite part of the project was the quote translation feature. I enjoyed designing the buttons for different languages, and I was really pleased with how smoothly the feature functions.
 + If you could do it over, what would you change?
-   + if I were able to do it over, I would change the design of the application. 
+   + If I had the chance to do it over, I would spend more time focusing on the visual design of the application to make it more aesthetically pleasing.
 + What is the most valuable thing you learned?
+  +I learned how to effectively integrate an API into a React application. 
 
 
 #### Jonathan Ramirez
@@ -96,6 +97,8 @@ I worked on creating the history page and creating the Database tables we needed
 ## Conclusion
 
 - How successful was the project?
-  - Think in terms of what did you set out to do and what actually got done?
+  - Overall, the project was successful. We were able to have the application accomplish what it was intended to do. 
 - What was the largest victory?
+  - The largest victory was fixing our database issues and having it smoothly save the quotes from the API.
 - Final assessment of the project
+  - Overall, this was a great first project. For us coming in with no experience with React, we did a great job creating a functioning application. 
