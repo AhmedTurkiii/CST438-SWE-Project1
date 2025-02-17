@@ -97,8 +97,8 @@ I worked on creating the history page and creating the Database tables we needed
 ## Conclusion
 
 - How successful was the project?
-  - Overall, the project was successful. We were able to have the application accomplish what it was intended to do. 
+  - Overall, the project was successful. We were able to build an application that achieved all of its intended goals. 
 - What was the largest victory?
-  - The largest victory was fixing our database issues and having it smoothly save the quotes from the API.
+  - The largest victory was resolving the database issues and ensuring that the quotes from the API were being saved smoothly.
 - Final assessment of the project
-  - Overall, this was a great first project. For us coming in with no experience with React, we did a great job creating a functioning application. 
+  - This was a great first project. Given that we had no prior experience with React, we did an excellent job creating a fully functional application. 
