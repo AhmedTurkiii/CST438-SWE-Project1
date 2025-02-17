@@ -27,12 +27,18 @@ QuoteLingo is an application intended to help users learn other languages by pro
 ### What was your role / which stories did you work on
 
 #### Ahmed Torki
-+ What was the biggest challenge? 
+I Worked on developing the application home page that display the current quote and include the option to add the quotes to the favourite page, which required me to display all the liked quotes on the favourite page and enable the user to unlike it, also worked on the history page with Jonathan as I add the logic for fetching all the quotes fetch for this specfic user and I used global context to set the user as a global variable can be used accros the app within that session, I also worked on the Unit test setup using Jest.
++ What was the biggest challenge?
+  + Time was definitely a challenge, especially cooperating with a team that has different availability times and works remotely. Additionally, defining who will work on which part of the project was crucial. In the app development context, one of the challenges was figuring out how to make the app use a single global user within one session and how to set and use the hooks.
 + Why was it a challenge?
   + How was the challenge addressed?
+    It was challenging because it was our first time using React Native, and we encountered conflicts between React and Expo. To address this, we set weekly goals, scheduled Zoom meetings via Google Calendar, and discussed who would work on which parts. I also used React Native tutorials to learn how to set and share global variables across the app.
 + Favorite / most interesting part of this project
+  + Most interesting part was when I had an issue of repeated records displayed on the front-end and there was some solutions to address this issue, but using SQL DISTINCT function was really effecient on this part as I was running out of time, also using a Physical Device and test the application on it while developing and fixing issues was fun to me! :)
 + If you could do it over, what would you change?
+  + I would use the time effeciently as we were planning to add more features to the application.
 + What is the most valuable thing you learned?
+  + Being mindful and start doing the task as early as you can.
 
 #### Alexia Leon
 I worked on developing the Favorites page and implementing API functionality to fetch quotes. I also helped build the login page, connecting it to the database for user authentication, and played a role in setting up the database and creating the user table. 
