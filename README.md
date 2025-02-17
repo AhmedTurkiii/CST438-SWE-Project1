@@ -69,6 +69,8 @@ I worked on creating the history page and creating the Database tables we needed
 
 
 #### Rull Mendez
+I was working on creating the login page and creating a new languages ​​page connected to the database but was having trouble finishing it.
+
 + What was the biggest challenge?
   + My biggest challenge with this project was trying to create this project without knowing much or anything about react native.
 + Why was it a challenge?
