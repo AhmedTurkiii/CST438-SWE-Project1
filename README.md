@@ -1,6 +1,6 @@
 # Project 01 Retrospective and overview
 
-[Github Repo]([https://github.com/dclinkenbeard/MyDemoApplication](https://github.com/AhmedTurkiii/CST438-SWE-Project1))
+[Github Repo](https://github.com/AhmedTurkiii/CST438-SWE-Project1)
 
 ## Overview
 
@@ -24,7 +24,7 @@ QuoteLingo is an application intended to help users learn other languages by pro
 - [Jonathan Ramirez](https://github.com/AhmedTurkiii/CST438-SWE-Project1/tree/JR_Branch2)
 - [RUll Mendez](https://github.com/AhmedTurkiii/CST438-SWE-Project1/tree/Rull_branch)
 
-#### What was your role / which stories did you work on
+### What was your role / which stories did you work on
 
 #### Ahmed Torki
 + What was the biggest challenge? 
@@ -35,6 +35,8 @@ QuoteLingo is an application intended to help users learn other languages by pro
 + What is the most valuable thing you learned?
 
 #### Alexia Leon
+I worked on creating the favorites page, and fetching quotes through the API. I helped create the login page and connected it to the database to allow for user login. 
+
 + What was the biggest challenge?
    + I think the biggest challenge for me was having to build this project while also having to learn how to use React. 
 + Why was it a challenge?
@@ -81,16 +83,6 @@ QuoteLingo is an application intended to help users learn other languages by pro
 1. Rull's pull requests are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/issues?q=is%3Apr%20author%3AShiro219)
 1. Rull's Github issues are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/issues?q=assignee%3AShiro219)
 
-#### What was your role / which stories did you work on
-
-### Ahmed Torki
-
-### Alexia Leon
-
-
-### Jonathan Ramirez 
-
-### Rull Mendez
 
 ## Conclusion
 
