@@ -1,5 +1,7 @@
 # Project 01 Retrospective and overview
 
+[Video Walkthrough](https://drive.google.com/file/d/1-0gD1-vVK_uTJQ4WHjX75x5OTj5rjwWV/view?usp=sharing)
+
 [Github Repo](https://github.com/AhmedTurkiii/CST438-SWE-Project1)
 
 ## Overview
