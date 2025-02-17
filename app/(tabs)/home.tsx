@@ -94,14 +94,14 @@ export default function HomeScreen() {
             }
         >
             <ThemedView style={styles.titleContainer}>
-                <ThemedText type="title">Today’s Quote</ThemedText>
-                <HelloWave />
+                <ThemedText type="title">Today’s Quote: </ThemedText>
             </ThemedView>
             <ThemedView style={styles.stepContainer}>
             <TouchableOpacity style = {[styles.button]}> 
                     <ThemedText style={styles.buttonText}>Add Original Quote to Favorites!</ThemedText>
                 </TouchableOpacity>
             </ThemedView>
+        
             <ThemedView style={styles.quoteContainer}>
                 {loading ? (
                     <ActivityIndicator size="large" color="black" />
@@ -110,7 +110,9 @@ export default function HomeScreen() {
                 ) : (
                     <>
                         {/* <ThemedText>ID: {quoteId}</ThemedText> */}
-                        <ThemedText style={styles.quoteText}>{quote}</ThemedText>
+                        <ThemedText style={styles.quoteText}>{quote}
+
+                        </ThemedText>
                         {/* <ThemedText style={styles.translatedText}>{translatedQuote}</ThemedText> */}
                     </>
                     
@@ -127,9 +129,8 @@ export default function HomeScreen() {
                     
                 </ThemedView>
             )}
-            </ThemedView>
-            {/* language selection message */}
-            <ThemedView style={styles.languagePrompt}>
+                                        {/* language selection message */}
+                                        <ThemedView style={styles.languagePrompt}>
                 <ThemedText>Select a language to translate to: </ThemedText>
             </ThemedView>
 
@@ -143,20 +144,11 @@ export default function HomeScreen() {
                             <ThemedText style={styles.buttonText}>{lang.name}</ThemedText>
                     </TouchableOpacity>
                 ))}
+            </ThemedView> 
             </ThemedView>
-
-            {/* Display the translated Quote
-            {selectedLanguage && (
-                <ThemedView style={styles.translatedContainer}>
-                    {translatedQuote ? (
-                        <ThemedText style={styles.translatedText}>{translatedQuote}</ThemedText>
-                    ) : (
-                        <ActivityIndicator size="small" color="black"/>
-                    )}
-                    
-                </ThemedView>
-            )} */}
-            
+            {/* language selection message */}
+            <ThemedView style={styles.languagePrompt}>
+            </ThemedView>          
         </ParallaxScrollView>
     </GestureHandlerRootView>
     );
@@ -180,15 +172,19 @@ const styles = StyleSheet.create({
         marginBottom: 8,
     },
     quoteContainer: {
-        margin: 0.1,
-        padding: 5,
-        backgroundColor: '#89cff0',
+        margin: 16,
+        padding: 20,
+        backgroundColor: '#A1CEDC',
         borderRadius: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
     },
     quoteText: {
-        fontSize: 18, 
-        color: '#1E3A8A', // Dark blue for a professional and readable look
-        fontWeight: 'bold', // Emphasize the original quote
+        fontSize: 18,
+        color: '#1E3A8A',
+        fontWeight: 'bold',
         textAlign: 'center',
         padding: 10,
   },
@@ -196,6 +192,7 @@ const styles = StyleSheet.create({
      languagePrompt: {
         marginTop: 20,
         alignItems: "center",
+        backgroundColor: 'transparent',
 },
     languageContainer: {
         flexDirection: "row",
@@ -204,16 +201,17 @@ const styles = StyleSheet.create({
         gap: 8,
         marginTop: 10,
         paddingHorizontal: 10,
+        backgroundColor: 'transparent',
 
     },
     button: {
-        backgroundColor: "#1E3A8A",
-        paddingVertical: 8,
-        paddingHorizontal: 14,
-        borderRadius: 8,
-        marginHorizontal: 4,
-        minWidth: 80,
-        alignItems: "center",
+        backgroundColor: '#1E3A8A',
+        paddingVertical: 10,
+        paddingHorizontal: 15,
+        borderRadius: 12,
+        marginHorizontal: 8,
+        minWidth: 100,
+        alignItems: 'center',
 },
 selectedButton: {
     backgroundColor: "#89cff0",
@@ -225,7 +223,7 @@ buttonText: {
 },
 translatedContainer: {
     marginTop: 20,
-    padding: 10,
+    padding: 15,
     backgroundColor: "#F3F4F6",
     borderRadius: 10,
     alignItems: "center",
