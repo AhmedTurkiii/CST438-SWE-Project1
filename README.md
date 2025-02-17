@@ -69,13 +69,18 @@ I worked on creating the history page and creating the Database tables we needed
 
 
 #### Rull Mendez
-+ What was the biggest challenge? 
++ What was the biggest challenge?
+  + My biggest challenge with this project was trying to create this project without knowing much or anything about react native.
 + Why was it a challenge?
-  + How was the challenge addressed?
+  + Because from the beginning I didn't have much knowledge about React Native that we need to make an application that works with React Native.
+    + How was the challenge addressed?
+      + I had to watch videos on YouTube and search for information on Google and use ChatGPT to answer some questions related to React Native.
 + Favorite / most interesting part of this project
+  + Making the page I was creating work even though in the end I didn't add it because there wasn't enough time and it's better to prioritize making the application work
 + If you could do it over, what would you change?
+  + Getting my part of the project working and connected to the database, showing my learning and progress.
 + What is the most valuable thing you learned?
-
+  + The most valuable thing I learned is how to use React efficiently, although I made several mistakes. With experience, I will make the next one better when using it.
 
 ### Ahmed Torki
 1. Ahmed's pull requests are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/issues?q=%20is%3Apr%20author%3AAhmedTurkiii%20)
