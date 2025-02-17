@@ -1,5 +1,6 @@
 export interface User {
-    id: number;  
+
+    id?: number;  // Make id optional
     username: string,
     password: string
 }

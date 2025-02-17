@@ -1,63 +1,111 @@
-# Welcome to your Expo app 👋
+# Project 01 Retrospective and overview
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+[Github Repo](https://github.com/AhmedTurkiii/CST438-SWE-Project1)
 
-## Authors
+## Overview
 
-Contributors names and contact info
+QuoteLingo is an application intended to help users learn other languages by providing quotes fetched from this [API](https://rapidapi.com/martin.svoboda/api/quotes15). Users are able to translate the quote to a few different languages and save some of their favorite quotes to look back on later. 
 
-1- Ahmed Torki
+## Introduction
 
-2- Alexia Leon Lopez
+* How was communication managed
+*    Communication was managed via Slack, and we also tended to have Zoom meetings outside of class. 
+* How many stories/issues were initially considered
+   * We initially considered 12 stories/issues.      
+* How many stories/issues were completed
+   * We were able to complete 15 stories/issues.     
 
-3- Jonathan	Ramirez-Fausto
+## Team Retrospective
 
-4- Rull Mendez
+### Team Member name
 
-## Get started
+- [Ahmed Torki](https://github.com/AhmedTurkiii/CST438-SWE-Project1/tree/torki_branch)
+- [Alexia Leon](https://github.com/AhmedTurkiii/CST438-SWE-Project1/tree/leon_branch)
+- [Jonathan Ramirez](https://github.com/AhmedTurkiii/CST438-SWE-Project1/tree/JR_Branch2)
+- [RUll Mendez](https://github.com/AhmedTurkiii/CST438-SWE-Project1/tree/Rull_branch)
 
-1. Install dependencies
+### What was your role / which stories did you work on
 
-   ```bash
-   npm install
-   ```
+#### Ahmed Torki
++ What was the biggest challenge? 
++ Why was it a challenge?
+  + How was the challenge addressed?
++ Favorite / most interesting part of this project
++ If you could do it over, what would you change?
++ What is the most valuable thing you learned?
 
-2. Start the app
+#### Alexia Leon
+I worked on developing the Favorites page and implementing API functionality to fetch quotes. I also helped build the login page, connecting it to the database for user authentication, and played a role in setting up the database and creating the user table. 
 
-   ```bash
-    npx expo start
-   ```
++ What was the biggest challenge?
+   + The biggest challenge for me was building the project while also learning how to use React. 
++ Why was it a challenge?
+   + It was challenging because we had only three weeks to not only complete the project but also learn how to effectively use React.
+  + How was the challenge addressed?
+   +To tackle this, I constantly searched for online resources and tutorials to help me understand React and its best practices 
++ Favorite / most interesting part of this project
+   + My favorite part of the project was the quote translation feature. I enjoyed designing the buttons for different languages, and I was really pleased with how smoothly the feature functions.
++ If you could do it over, what would you change?
+   + If I had the chance to do it over, I would spend more time focusing on the visual design of the application to make it more aesthetically pleasing.
++ What is the most valuable thing you learned?
+  +I learned how to effectively integrate an API into a React application. 
 
-In the output, you'll find options to open the app in a
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+#### Jonathan Ramirez
+I worked on creating the history page and creating the Database tables we needed for our project.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
++ What was the biggest challenge?
+   + I think the biggest challenge for me was having to get the database set up to function with our API and constantly having to battle with the project to get it to run.
++ Why was it a challenge?
+   +  This was a challenge because we had to figure out how to create and fill the database with tables and values in three weeks as well as figuring out how to run the project with all the errors.
+  + How was the challenge addressed?
+   + I had to research quite a bit on how React works and how it handles databases to figure it out.  
++ Favorite / most interesting part of this project
+   + I'd say my favorite part of this project was how well our logo came out and the overall style of the project.
++ If you could do it over, what would you change?
+   + If I were able to do it over, I would change the APIs to maybe find one that could've worked better with what we needed. 
++ What is the most valuable thing you learned?
+   + The most valuable thing I feel like I learned is how React handles a lot of its core functions and Databases.
 
-## Get a fresh project
 
-When you're ready, run:
+#### Rull Mendez
+I was working on creating the login page and creating a new languages ​​page connected to the database but was having trouble finishing it.
 
-```bash
-npm run reset-project
-```
++ What was the biggest challenge?
+  + My biggest challenge with this project was trying to create this project without knowing much or anything about react native.
++ Why was it a challenge?
+  + Because from the beginning I didn't have much knowledge about React Native that we need to make an application that works with React Native.
+    + How was the challenge addressed?
+      + I had to watch videos on YouTube and search for information on Google and use ChatGPT to answer some questions related to React Native.
++ Favorite / most interesting part of this project
+  + Making the page I was creating work even though in the end I didn't add it because there wasn't enough time and it's better to prioritize making the application work
++ If you could do it over, what would you change?
+  + Getting my part of the project working and connected to the database, showing my learning and progress.
++ What is the most valuable thing you learned?
+  + The most valuable thing I learned is how to use React efficiently, although I made several mistakes. With experience, I will make the next one better when using it.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Ahmed Torki
+1. Ahmed's pull requests are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/issues?q=%20is%3Apr%20author%3AAhmedTurkiii%20)
+1. Ahmed's Github issues are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/issues?q=assignee%3AAhmedTurkiii)
 
-## Learn more
+### Alexia Leon
+1. Alexia's pull requests are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/pulls?q=author%3AAlexialeon0+)
+1. Alexia's Github issues are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/issues?q=is%3Aopen+is%3Apr+author%3A%40me)
 
-To learn more about developing your project with Expo, look at the following resources:
+### Jonathan Ramirez
+1. Jonathan's pull requests are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/issues?q=is%3Apr%20author%3AJoaleramirez)
+1. Jonathan's Github issues are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/issues?q=assignee%3AJoaleramirez)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Rull Mendez
+1. Rull's pull requests are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/issues?q=is%3Apr%20author%3AShiro219)
+1. Rull's Github issues are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/issues?q=assignee%3AShiro219)
 
-## Join the community
 
-Join our community of developers creating universal apps.
+## Conclusion
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-
+- How successful was the project?
+  - Overall, the project was successful. We were able to build an application that achieved all of its intended goals. 
+- What was the largest victory?
+  - The largest victory was resolving the database issues and ensuring that the quotes from the API were being saved smoothly.
+- Final assessment of the project
+  - This was a great first project. Given that we had no prior experience with React, we did an excellent job creating a fully functional application. 

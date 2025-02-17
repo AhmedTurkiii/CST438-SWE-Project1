@@ -6,13 +6,21 @@ import { initializeDatabase} from '@/src/db/database';
 import { useSQLiteContext } from 'expo-sqlite';
 import { User } from '@/src/types/userInfo';
 import { LinearGradient } from 'expo-linear-gradient';
+
+import { useUser } from "@/context/UserContext"; // Import the useUser hook
+// import { setUserId } from "@/context/UserContext"; // Import the setUserId function
+
+
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useEffect, useState } from 'react';
+import React from 'react';
 
 
 export default function LoginScreen() {
+  const { setUserId } = useUser(); // Get the setUserId function from context
+
   const router = useRouter();
   const db = useSQLiteContext();
   const [username, setUserName] = useState('');
@@ -42,8 +50,18 @@ export default function LoginScreen() {
       }
       if (user.password === password) {
         await AsyncStorage.setItem('isAuthenticated', 'true');
-        await AsyncStorage.setItem('userId', user.id.toString());
-        router.replace('/(tabs)/home');
+
+        if (user.id !== undefined) {
+          await AsyncStorage.setItem('user_id', user.id.toString());
+          console.log('User ID:', user.id);  // Add this line to log the user ID
+          setUserId(user.id.toString());  // Update the global user ID
+
+        } else {
+          Alert.alert("Error", "User ID is undefined.");
+          return;
+        }
+
+        router.replace(`/home?user_id=${user.id}`);
       }else {
         Alert.alert("Login Failed", "Incorrect password.");
       }
@@ -74,6 +92,14 @@ export default function LoginScreen() {
 
         Alert.alert("Success", "Account has been created." );
         await AsyncStorage.setItem('isAuthenticated', 'true');
+            // Get the new user id after insert
+    const newUser = (await db.getFirstAsync('SELECT * FROM user WHERE username = ?', [username])) as User;
+    if (newUser && newUser.id) {
+      // Set the user id globally
+      await AsyncStorage.setItem('isAuthenticated', 'true');
+      await AsyncStorage.setItem('user_id', newUser.id.toString());
+      setUserId(newUser.id.toString());  // Update the global user id in context
+    }
         router.replace('/(tabs)/home');
 
       } catch (error) {

@@ -1,82 +1,134 @@
-import { Image, StyleSheet, TouchableOpacity, FlatList, SafeAreaView, View } from "react-native";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { Image, StyleSheet, Platform, ActivityIndicator, TouchableOpacity, Button, Text } from 'react-native';
+import axios from 'axios';
+import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import React, { useEffect, useState } from "react";
-import { getHistoryQuotes, initializeHistoryTable, seedHistoryWithRandomQuotes } from "@/src/db/history_table";
-import type { HistoryQuote } from "@/src/types/historyQuote";
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+import { useEffect, useState } from 'react';
+import React from 'react';
+import { ScrollView, GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SQLiteDatabase } from 'expo-sqlite';
+import { initializeDatabase } from '@/src/db/database';
+import * as SQLite from 'expo-sqlite';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useRouter, SearchParams } from 'expo-router';
+import { View } from 'react-native';
+import { useSearchParams } from 'expo-router/build/hooks';
+import { useUser } from '@/context/UserContext';
+
+const db = SQLite.openDatabaseSync("database.db");
 
 export default function HistoryScreen() {
-    const [historyQuotes, setHistoryQuotes] = useState<HistoryQuote[]>([]);
+    const [quotes, setQuotes] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    
+
+    const { user_id } = useUser();
+    console.log('User ID on History screen:', user_id);
 
     useEffect(() => {
-        const fetchHistoryQuotes = async () => {
-            await initializeHistoryTable(); 
-            await seedHistoryWithRandomQuotes(); 
-            const storedQuotes = await getHistoryQuotes();
-            setHistoryQuotes(storedQuotes);
+        if (!user_id) {
+            setError('No user ID provided.');
+            setLoading(false);
+            return;
+        }
+        
+        const fetchQuotes = async () => {
+            try {
+                const result = await db.getAllAsync(
+                    `SELECT * FROM quote
+                    WHERE user_id = ?
+                    AND translated_quote IN (
+                        SELECT DISTINCT translated_quote FROM quote WHERE user_id = ?
+                    )
+                    ORDER BY id DESC`, 
+                   [user_id, user_id]
+               );
+                setQuotes(result);
+                console.log('Quotes:', result);
+            } catch (error) {
+                console.error('Error fetching quotes:', error);
+                setError('Failed to load quotes.');
+            } finally {
+                setLoading(false);
+            }
         };
-    
-        fetchHistoryQuotes();
-    }, []);
-    
+
+        fetchQuotes();
+    }, [user_id]);
 
     return (
-       <ParallaxScrollView
-             headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-             headerImage={
-               <Image
-                 source={require('@/assets/images/QuoteLingo_Logo.jpeg')}
-                 style={styles.reactLogo}
-               />
-             }>
+        <ParallaxScrollView
+            headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+            headerImage={<Image source={require('@/assets/images/Designer-2.jpeg')} style={styles.reactLogo} />}
+        >
             <ThemedView style={styles.titleContainer}>
                 <ThemedText type="title">Quote History</ThemedText>
             </ThemedView>
 
-            <FlatList
-            data={historyQuotes}
-            keyExtractor={(item) => item.id.toString()}
-            nestedScrollEnabled={true}
-            renderItem={({ item }) => (
-                <View style={styles.quoteContainer}>
-                    <ThemedText type="default" style={styles.quoteText}>
-                        Quote: "{item.quote}" - {item.author}
-                    </ThemedText>
-                </View>
-            )}
-            />
-
+            <ThemedView style={styles.stepContainer}>
+                {loading ? (
+                    <ActivityIndicator size="large" color="black" />
+                ) : error ? (
+                    <ThemedText>{error}</ThemedText>
+                ) : quotes.length === 0 ? (
+                    <ThemedText>No quotes found.</ThemedText>
+                ) : (
+                    <ScrollView>
+                        {quotes.map((quoteItem: any) => (
+                            <ThemedView style={styles.quoteContainer} key={quoteItem.id}>
+                                <ThemedText style={styles.quoteText}>{quoteItem.original_quote}</ThemedText>
+                                {quoteItem.translated_quote && (
+                                    <ThemedText style={styles.translatedText}>
+                                        {quoteItem.translated_quote}
+                                    </ThemedText>
+                                )}
+                            </ThemedView>
+                        ))}
+                    </ScrollView>
+                )}
+            </ThemedView>
         </ParallaxScrollView>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#FFF",
-    },
-    titleContainer: {
-        flexDirection: "row",
-        alignItems: "center",
-        gap: 8,
-        padding: 16,
-    },
     reactLogo: {
         height: 250,
         width: 410,
         bottom: 0,
         left: 0,
         position: 'absolute',
-      },
+    },
+    titleContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8,
+        marginTop: 20,
+    },
+    stepContainer: {
+        gap: 8,
+        marginBottom: 8,
+    },
     quoteContainer: {
         margin: 10,
-        padding: 15,
-        backgroundColor: "#89cff0",
+        padding: 10,
+        backgroundColor: '#89cff0',
         borderRadius: 10,
+        marginBottom: 15,
     },
     quoteText: {
+        fontSize: 18,
+        color: '#1E3A8A',
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    translatedText: {
         fontSize: 16,
-        color: "#333",
+        color: '#6B7280',
+        fontStyle: 'italic',
+        textAlign: 'center',
+        paddingTop: 10,
     },
 });
