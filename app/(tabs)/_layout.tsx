@@ -9,16 +9,16 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import {  SQLiteProvider } from 'expo-sqlite';
 import { initializeDatabase } from '@/src/db/database';
-import { LinearGradient } from 'expo-linear-gradient'; 
 import { StyleSheet } from 'react-native';
 import { UserProvider } from '@/context/UserContext';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}> {/* Wrap your app in GestureHandlerRootView */}
+    <GestureHandlerRootView style={{ flex: 1 }}> 
 
     <UserProvider>  {/* Wrap the whole app in UserProvider */}
     <SQLiteProvider databaseName='database.db' onInit={initializeDatabase}>
@@ -41,22 +41,22 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'index',
-          href: null,
+          title: 'Logout',
           tabBarStyle: { display: 'none' },
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="exit-to-app" size={28} color={color} />,
         }}
       />
       <Tabs.Screen
         name="home"
         options={{
-          title: 'home',
+          title: 'Home',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
         }}
       />
       <Tabs.Screen
         name="favorite"
         options={{
-          title: 'favorites',
+          title: 'Favorites',
           tabBarIcon: ({ color }) => <AntDesign name="heart" size={28} color={color}/>,
         }}
         />
@@ -74,9 +74,4 @@ export default function TabLayout() {
 
   );
 }
-const styles = StyleSheet.create({
-  gradientContainer: {
-    flex: 1, // Ensures the gradient covers the entire screen
-    backgroundColor: 'transparent', 
-  },
-});
+

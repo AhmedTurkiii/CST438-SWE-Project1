@@ -3,8 +3,6 @@ import {
   StyleSheet,
   ActivityIndicator,
   FlatList,
-  View,
-  Text,
   TouchableOpacity,
   Image,
   RefreshControl

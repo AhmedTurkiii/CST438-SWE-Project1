@@ -1,19 +1,11 @@
-import { Image, StyleSheet, Platform, ActivityIndicator, TouchableOpacity, Button, Text } from 'react-native';
-import axios from 'axios';
-import { HelloWave } from '@/components/HelloWave';
+import { Image, StyleSheet,  ActivityIndicator,  } from 'react-native';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useEffect, useState } from 'react';
 import React from 'react';
-import { ScrollView, GestureHandlerRootView } from 'react-native-gesture-handler';
-import { SQLiteDatabase } from 'expo-sqlite';
-import { initializeDatabase } from '@/src/db/database';
+import { ScrollView } from 'react-native-gesture-handler';
 import * as SQLite from 'expo-sqlite';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useRouter, SearchParams } from 'expo-router';
-import { View } from 'react-native';
-import { useSearchParams } from 'expo-router/build/hooks';
 import { useUser } from '@/context/UserContext';
 
 const db = SQLite.openDatabaseSync("database.db");
