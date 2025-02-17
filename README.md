@@ -51,12 +51,21 @@ I worked on creating the favorites page, and fetching quotes through the API. I 
 
 
 #### Jonathan Ramirez
-+ What was the biggest challenge? 
+I worked on creating the history page and creating the Database tables we needed for our project.
+
++ What was the biggest challenge?
+   + I think the biggest challenge for me was having to get the database set up to function with our API and constantly having to battle with the project to get it to run.
 + Why was it a challenge?
+   +  This was a challenge because we had to figure out how to create and fill the database with tables and values in three weeks as well as figuring out how to run the project with all the errors.
   + How was the challenge addressed?
+   + I had to research quite a bit on how React works and how it handles databases to figure it out.  
 + Favorite / most interesting part of this project
+   + I'd say my favorite part of this project was how well our logo came out and the overall style of the project.
 + If you could do it over, what would you change?
+   + If I were able to do it over, I would change the APIs to maybe find one that could've worked better with what we needed. 
 + What is the most valuable thing you learned?
+   + The most valuable thing I feel like I learned is how React handles a lot of its core functions and Databases.
+
 
 #### Rull Mendez
 + What was the biggest challenge? 
