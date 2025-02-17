@@ -32,6 +32,10 @@ export const initializeDatabase = async (db : SQLiteDatabase) => {
         try {
             await db.runAsync(`
                 INSERT OR IGNORE INTO user (username, password) VALUES('admin', 'password');
+                INSERT OR IGNORE INTO user (username, password) VALUES('a', '1');
+                                INSERT OR IGNORE INTO user (username, password) VALUES('1111', '1111');
+
+
                 INSERT OR IGNORE INTO user (username, password) VALUES('test', '123');
                 INSERT OR IGNORE INTO user (username, password) VALUES('aleon', '123');
             `);

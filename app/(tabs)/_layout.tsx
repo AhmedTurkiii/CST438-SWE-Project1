@@ -11,11 +11,16 @@ import {  SQLiteProvider } from 'expo-sqlite';
 import { initializeDatabase } from '@/src/db/database';
 import { LinearGradient } from 'expo-linear-gradient'; 
 import { StyleSheet } from 'react-native';
+import { UserProvider } from '@/context/UserContext';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
+    <GestureHandlerRootView style={{ flex: 1 }}> {/* Wrap your app in GestureHandlerRootView */}
+
+    <UserProvider>  {/* Wrap the whole app in UserProvider */}
     <SQLiteProvider databaseName='database.db' onInit={initializeDatabase}>
 
     <Tabs initialRouteName="index"
@@ -64,6 +69,9 @@ export default function TabLayout() {
         />
     </Tabs>
     </SQLiteProvider>
+    </UserProvider>
+    </GestureHandlerRootView>
+
   );
 }
 const styles = StyleSheet.create({
