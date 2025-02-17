@@ -1,63 +1,100 @@
-# Welcome to your Expo app 👋
+# Project 01 Retrospective and overview
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+[Github Repo]([https://github.com/dclinkenbeard/MyDemoApplication](https://github.com/AhmedTurkiii/CST438-SWE-Project1))
 
-## Authors
+## Overview
 
-Contributors names and contact info
+QuoteLingo is an application intended to help users learn other languages by providing quotes fetched from this [API](https://rapidapi.com/martin.svoboda/api/quotes15). Users are able to translate the quote to a few different languages and save some of their favorite quotes to look back on later. 
 
-1- Ahmed Torki
+## Introduction
 
-2- Alexia Leon Lopez
+* How was communication managed
+*    Communication was managed via Slack, and we also tended to have Zoom meetings outside of class. 
+* How many stories/issues were initially considered
+   * We initially considered 12 stories/issues.      
+* How many stories/issues were completed
+   * We were able to complete 15 stories/issues.     
 
-3- Jonathan	Ramirez-Fausto
+## Team Retrospective
 
-4- Rull Mendez
+### Team Member name
 
-## Get started
+- [Ahmed Torki](https://github.com/AhmedTurkiii/CST438-SWE-Project1/tree/torki_branch)
+- [Alexia Leon](https://github.com/AhmedTurkiii/CST438-SWE-Project1/tree/leon_branch)
+- [Jonathan Ramirez](https://github.com/AhmedTurkiii/CST438-SWE-Project1/tree/JR_Branch2)
+- [RUll Mendez](https://github.com/AhmedTurkiii/CST438-SWE-Project1/tree/Rull_branch)
 
-1. Install dependencies
+#### What was your role / which stories did you work on
 
-   ```bash
-   npm install
-   ```
+#### Ahmed Torki
++ What was the biggest challenge? 
++ Why was it a challenge?
+  + How was the challenge addressed?
++ Favorite / most interesting part of this project
++ If you could do it over, what would you change?
++ What is the most valuable thing you learned?
 
-2. Start the app
+#### Alexia Leon
++ What was the biggest challenge?
+   + I think the biggest challenge for me was having to build this project while also having to learn how to use React. 
++ Why was it a challenge?
+   +  This was a challenge because we only had three weeks to not only work on our project, but also figure out how to use React.
+  + How was the challenge addressed?
+   + I was constantly looking online for resources on how to use React.  
++ Favorite / most interesting part of this project
+   + I'd say my favorite part of this project was 
++ If you could do it over, what would you change?
+   + if I were able to do it over, I would change the design of the application. 
++ What is the most valuable thing you learned?
 
-   ```bash
-    npx expo start
-   ```
 
-In the output, you'll find options to open the app in a
+#### Jonathan Ramirez
++ What was the biggest challenge? 
++ Why was it a challenge?
+  + How was the challenge addressed?
++ Favorite / most interesting part of this project
++ If you could do it over, what would you change?
++ What is the most valuable thing you learned?
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+#### Rull Mendez
++ What was the biggest challenge? 
++ Why was it a challenge?
+  + How was the challenge addressed?
++ Favorite / most interesting part of this project
++ If you could do it over, what would you change?
++ What is the most valuable thing you learned?
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
+### Ahmed Torki
+1. Ahmed's pull requests are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/issues?q=%20is%3Apr%20author%3AAhmedTurkiii%20)
+1. Ahmed's Github issues are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/issues?q=assignee%3AAhmedTurkiii)
 
-When you're ready, run:
+### Alexia Leon
+1. Alexia's pull requests are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/pulls?q=author%3AAlexialeon0+)
+1. Alexia's Github issues are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/issues?q=is%3Aopen+is%3Apr+author%3A%40me)
 
-```bash
-npm run reset-project
-```
+### Jonathan Ramirez
+1. Jonathan's pull requests are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/issues?q=is%3Apr%20author%3AJoaleramirez)
+1. Jonathan's Github issues are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/issues?q=assignee%3AJoaleramirez)
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Rull Mendez
+1. Rull's pull requests are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/issues?q=is%3Apr%20author%3AShiro219)
+1. Rull's Github issues are [here](https://github.com/AhmedTurkiii/CST438-SWE-Project1/issues?q=assignee%3AShiro219)
 
-## Learn more
+#### What was your role / which stories did you work on
 
-To learn more about developing your project with Expo, look at the following resources:
+### Ahmed Torki
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Alexia Leon
 
-## Join the community
 
-Join our community of developers creating universal apps.
+### Jonathan Ramirez 
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### Rull Mendez
 
+## Conclusion
+
+- How successful was the project?
+  - Think in terms of what did you set out to do and what actually got done?
+- What was the largest victory?
+- Final assessment of the project
