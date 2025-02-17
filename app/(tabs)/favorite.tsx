@@ -15,6 +15,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { useUser } from "@/context/UserContext";
 
 // open the database
 const db = SQLite.openDatabaseSync("database.db");
@@ -26,14 +27,21 @@ export default function FavoriteQuotes() {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  
+  const { user_id } = useUser();
+  console.log('User ID on Favorite screen:', user_id);
+
+  
 
   // Fetch Favorite Quotes Function
   const fetchFavoriteQuotes = async () => {
     try {
       setLoading(true);
       const result = await db.getAllAsync<{ id: number; quote: string; translated_quote?: string }>(
-        "SELECT * FROM favorites ORDER BY id DESC;"
+        `SELECT * FROM favorites WHERE user_id = ? ORDER BY id DESC`,
+        [user_id]  // Inject user_id parameter here
       );
+      console.log("Favorite Quotes:", result);
       setFavoriteQuotes(result.length > 0 ? result : []);
     } catch (err) {
       console.error("Error fetching favorite quotes:", err);
@@ -47,7 +55,7 @@ export default function FavoriteQuotes() {
   const deleteFromFavorites = async (id: number) => {
     try {
       await db.runAsync("DELETE FROM favorites WHERE id = ?", [id]);
-      fetchFavoriteQuotes(); // Refresh data after deletion
+      fetchFavoriteQuotes(); // refresh data after deletion
     } catch (err) {
       console.error("Error deleting from favorites:", err);
       setError("Failed to delete the quote.");

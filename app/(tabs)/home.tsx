@@ -10,6 +10,10 @@ import { ScrollView, GestureHandlerRootView } from 'react-native-gesture-handler
 import { SQLiteDatabase } from 'expo-sqlite';
 import { initializeDatabase } from '@/src/db/database';
 import * as SQLite from 'expo-sqlite';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useRouter, SearchParams, router } from 'expo-router';
+import { View } from 'react-native';
+import { useSearchParams } from 'expo-router/build/hooks';
 
 
 
@@ -26,11 +30,14 @@ const LANGUAGES = [
     {name: "French", code: "fr"},
     {name: "Portugues", code: "pt"},
     {name: "Russian", code: "ru"},
+    {name: "Arabic", code: "ar"},
+
 ];
 const db = SQLite.openDatabaseSync("database.db");
 if (!db) {
     console.error("Database failed to open.");
 }
+
 
 export default function HomeScreen() {
     const [quote, setQuote] = useState(null);
@@ -41,8 +48,13 @@ export default function HomeScreen() {
     const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
 
 
-
+    const searchParams = useSearchParams();
+    const user_id = searchParams.get('user_id'); // Access the user_id query parameter
+    
+    console.log('User ID on Home screen:', user_id); 
     useEffect(() => {
+        // router.push(`/history?user_id=${user_id}`);
+
         if (db) {
             initializeDatabase(db);
         } else {
@@ -88,6 +100,7 @@ export default function HomeScreen() {
         }
     };
 
+
     const addQuote = async (db: SQLiteDatabase, quote: string, translatedQuote: string | null, quoteId: string) => {
         if (!quote) {
             console.error("No quote to add.");
@@ -98,7 +111,7 @@ export default function HomeScreen() {
             await db.runAsync(
                 `INSERT INTO quote (user_id, original_quote, translated_quote, quote_api_id) 
                  VALUES (?, ?, ?, ?)`,
-                [1, quote, translatedQuote || null, quoteId]
+                [user_id, quote, translatedQuote || null, quoteId]
             );
     
             console.log("Quote added successfully!");
@@ -117,7 +130,12 @@ export default function HomeScreen() {
             console.error("Error adding quote:", error);
         }
     };
-    
+
+    if (quote && quoteId) {
+        addQuote(db, quote, translatedQuote, quoteId);
+    } else {
+        console.error('Quote or QuoteId is missing.');
+    }
     
 
     const addQuoteToFavorites = async (db: SQLiteDatabase, quote: string, translatedQuote: string | null) => {
@@ -130,7 +148,7 @@ export default function HomeScreen() {
             await db.runAsync(
                 `INSERT INTO favorites (user_id, quote, translated_quote) 
                  VALUES (?, ?, ?)`,
-                [1, quote, translatedQuote || null]
+                [user_id, quote, translatedQuote || null]
             );
     
             console.log("Quote added to favorites!");

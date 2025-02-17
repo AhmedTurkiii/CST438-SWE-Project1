@@ -1,20 +1,13 @@
 module.exports = {
-    preset: 'jest-expo',
-    testEnvironment: 'jsdom',
-    setupFilesAfterEnv: ['<rootDir>/jest.setup.js'], // Keep this if you use it
-    moduleNameMapper: {
-      '^@/(.*)$': '<rootDir>/$1',
-    },
-    transformIgnorePatterns: [
-      "node_modules/(?!(expo-sqlite|react-native-reanimated|react-native|expo-modules-core)/)"
-    ],
-  };
-  module.exports = {
-    preset: 'jest-expo',
-    transformIgnorePatterns: [
-      'node_modules/(?!(expo-modules-core|@react-native|react-native|expo)/)',
-    ],
-  };
-
-  
-  
+  preset: 'jest-expo',
+  transformIgnorePatterns: [
+    'node_modules/(?!(expo-sqlite|expo-asset|expo-modules-core|@react-native|react-native|expo)/)',
+  ],
+  transform: {
+    '^.+\\.tsx?$': 'babel-jest',
+    '^.+\\.jsx?$': 'babel-jest',
+  },
+  moduleNameMapper: {
+    '^expo-asset$': '<rootDir>/node_modules/expo-asset/build/index.js',
+  },
+};
