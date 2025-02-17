@@ -1,12 +1,11 @@
 import { Image, StyleSheet, Platform, ActivityIndicator, TouchableOpacity, Button, Text } from 'react-native';
 import axios from 'axios';
-import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useEffect, useState } from 'react';
 import React from 'react';
-import { ScrollView, GestureHandlerRootView } from 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SQLiteDatabase } from 'expo-sqlite';
 import { initializeDatabase } from '@/src/db/database';
 import * as SQLite from 'expo-sqlite';
@@ -29,7 +28,7 @@ const API_HEADERS = {
 const LANGUAGES = [
     {name: "Spanish", code: "es"},
     {name: "French", code: "fr"},
-    {name: "Portugues", code: "pt"},
+    {name: "Portuguese", code: "pt"},
     {name: "Russian", code: "ru"},
     {name: "Arabic", code: "ar"},
 
@@ -47,8 +46,9 @@ export default function HomeScreen() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
+ 
 
-
+    // function that fetches quote from API
     const { user_id } = useUser();
     console.log('User ID on Home screen:', user_id); 
     useEffect(() => {
@@ -75,12 +75,11 @@ export default function HomeScreen() {
             }
         };
 
-
-            
-
         getQuote();
+
     }, []);
 
+    //function that translates original quote to selected language
     const translateQuote = async (languageCode : string) => {
         if (!quote) return;
 
@@ -94,10 +93,8 @@ export default function HomeScreen() {
             setTranslatedQuote(translationResponse.data.responseData.translatedText);
         } catch(error) { 
             console.error("Error translating quote: ", error);
-           // setTranslatedQuote("Translation failed :((");
         }
     };
-
 
     const addQuote = async (db: SQLiteDatabase, quote: string, translatedQuote: string | null, quoteId: string) => {
         if (!quote) {
@@ -177,24 +174,17 @@ export default function HomeScreen() {
             }
         >
             <ThemedView style={styles.titleContainer}>
-                <ThemedText type="title">Today’s Quote</ThemedText>
-                <HelloWave />
+                <ThemedText type="title" style={styles.titleText}>Welcome to Quotelingo! 🌍✨{'\n'}Learn languages by translating daily quotes.</ThemedText>
             </ThemedView>
             <ThemedView style={styles.stepContainer}>
             <TouchableOpacity 
     style={styles.button} 
     onPress={() => quote && addQuoteToFavorites(db, quote, translatedQuote)}
 >
-    <ThemedText style={styles.buttonText}>Add to Favorites</ThemedText>
-</TouchableOpacity>r
-                {/* <TouchableOpacity 
-    style={styles.button} 
-    onPress={() => quoteId && addQuote(db, quote!, translatedQuote, quoteId)}
->
-    <ThemedText style={styles.buttonText}>Save Quote</ThemedText>
-</TouchableOpacity> */}
-
+    <ThemedText style={styles.buttonText}>❤️Add Original Quote to Favorites!❤️</ThemedText>
+</TouchableOpacity>
             </ThemedView>
+        
             <ThemedView style={styles.quoteContainer}>
                 {loading ? (
                     <ActivityIndicator size="large" color="black" />
@@ -202,9 +192,9 @@ export default function HomeScreen() {
                     <ThemedText>{error}</ThemedText>
                 ) : (
                     <>
-                        {/* <ThemedText>ID: {quoteId}</ThemedText> */}
-                        <ThemedText style={styles.quoteText}>{quote}</ThemedText>
-                        {/* <ThemedText style={styles.translatedText}>{translatedQuote}</ThemedText> */}
+                        <ThemedText style={styles.quoteText}>{quote}
+
+                        </ThemedText>
                     </>
                     
                 )}
@@ -220,9 +210,8 @@ export default function HomeScreen() {
                     
                 </ThemedView>
             )}
-            </ThemedView>
-            {/* language selection message */}
-            <ThemedView style={styles.languagePrompt}>
+                {/* language selection message */}
+                <ThemedView style={styles.languagePrompt}>
                 <ThemedText>Select a language to translate to: </ThemedText>
             </ThemedView>
 
@@ -236,20 +225,8 @@ export default function HomeScreen() {
                             <ThemedText style={styles.buttonText}>{lang.name}</ThemedText>
                     </TouchableOpacity>
                 ))}
+            </ThemedView> 
             </ThemedView>
-
-            {/* Display the translated Quote
-            {selectedLanguage && (
-                <ThemedView style={styles.translatedContainer}>
-                    {translatedQuote ? (
-                        <ThemedText style={styles.translatedText}>{translatedQuote}</ThemedText>
-                    ) : (
-                        <ActivityIndicator size="small" color="black"/>
-                    )}
-                    
-                </ThemedView>
-            )} */}
-            
         </ParallaxScrollView>
     </GestureHandlerRootView>
     );
@@ -264,24 +241,49 @@ const styles = StyleSheet.create({
         position: 'absolute',
     },
     titleContainer: {
-        flexDirection: 'row',
+        marginTop: 10, 
+        padding: 12,  
+        backgroundColor: '#FFFFFF',  
+        borderRadius: 10,
         alignItems: 'center',
-        gap: 8,
+        justifyContent: 'center',
+        // shadowColor: '#000',
+        // shadowOffset: { width: 0, height: 3 },
+        // shadowOpacity: 0.05,
+        // shadowRadius: 5,
+        // elevation: 3,
+    },
+    titleText: {
+        fontSize: 16,
+        color: '#1E3A8A', 
+        fontWeight: '600', 
+        textAlign: 'center', 
+        letterSpacing: 1, 
+        lineHeight: 36,
+        fontFamily: 'Arial', 
+        paddingHorizontal: 10, 
     },
     stepContainer: {
         gap: 8,
         marginBottom: 8,
     },
     quoteContainer: {
-        margin: 0.1,
-        padding: 5,
-        backgroundColor: '#89cff0',
+        margin: 16,
+        padding: 20,
+        backgroundColor: '#A1CEDC',
         borderRadius: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 5 },
+        shadowOpacity: 0.3,
+        shadowRadius: 10,
+        elevation: 5, 
+        justifyContent: 'center', 
+        alignItems: 'center',
     },
     quoteText: {
-        fontSize: 18, 
-        color: '#1E3A8A', // Dark blue for a professional and readable look
-        fontWeight: 'bold', // Emphasize the original quote
+        fontSize: 18,
+        color: '#1E3A8A',
+        fontWeight: 'bold',
         textAlign: 'center',
         padding: 10,
   },
@@ -289,6 +291,17 @@ const styles = StyleSheet.create({
      languagePrompt: {
         marginTop: 20,
         alignItems: "center",
+        padding: 15, 
+        backgroundColor: '#F0F4F8', 
+        borderRadius: 10, 
+        shadowColor: '#000', 
+        shadowOffset: { width: 0, height: 3 }, 
+        shadowOpacity: 0.1, 
+        shadowRadius: 5, 
+        elevation: 2, 
+        fontFamily: 'Arial',
+        fontWeight: '600',  
+     
 },
     languageContainer: {
         flexDirection: "row",
@@ -297,40 +310,53 @@ const styles = StyleSheet.create({
         gap: 8,
         marginTop: 10,
         paddingHorizontal: 10,
+        backgroundColor: 'transparent',
 
     },
     button: {
-        backgroundColor: "#1E3A8A",
-        paddingVertical: 8,
-        paddingHorizontal: 14,
-        borderRadius: 8,
-        marginHorizontal: 4,
-        minWidth: 80,
-        alignItems: "center",
+        backgroundColor: "#1E3A8A", 
+        paddingVertical: 12,
+        paddingHorizontal: 20,
+        borderRadius: 30, 
+        marginVertical: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.1,
+        shadowRadius: 6,
 },
 selectedButton: {
     backgroundColor: "#89cff0",
+    transform: [{ scale: 0.98 }],
 },
 buttonText: {
     color: "white",
     fontSize: 14,
     fontWeight: "bold",
+    textAlign: 'center',
 },
 translatedContainer: {
     marginTop: 20,
-    padding: 10,
+    padding: 15,
     backgroundColor: "#F3F4F6",
     borderRadius: 10,
-    alignItems: "center",
+    shadowColor: '#000', 
+    shadowOffset: { width: 0, height: 4 }, 
+    shadowOpacity: 0.2, 
+    shadowRadius: 8, 
+    elevation: 5, 
+
 },
   translatedText: {
-      fontSize: 16, 
-      color: '#6B7280',
-      fontStyle: 'italic',
-      textAlign: 'center',
-      padding: 10,
-      backgroundColor: '#F3F4F6', 
-      borderRadius: 8, 
+    fontSize: 18, 
+    color: '#6B7280',
+    fontStyle: 'italic',
+    textAlign: 'center',
+    padding: 10,
+    backgroundColor: '#F3F4F6', 
+    borderRadius: 8, 
   },
   
 });
