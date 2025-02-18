@@ -12,7 +12,9 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useEffect, useState } from 'react';
 import React from 'react';
+import { LogBox } from 'react-native';
 
+LogBox.ignoreAllLogs();
 
 export default function LoginScreen() {
   const { setUserId } = useUser(); // Get the setUserId function from context
