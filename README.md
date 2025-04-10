@@ -1,7 +1,7 @@
 
 # Project Retrospective and overview 
 
-<p align="center">
+<p align="right">
   <img src="assets/images/Designer-2.jpeg" alt="Logo" width="150"/>
 </p>
 
