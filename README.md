@@ -1,14 +1,24 @@
 
 # Project Retrospective and overview 
 
-<p align="right">
+<p align="center">
   <img src="assets/images/Designer-2.jpeg" alt="Logo" width="150"/>
 </p>
-
 
 [Video Walkthrough](https://drive.google.com/file/d/1-0gD1-vVK_uTJQ4WHjX75x5OTj5rjwWV/view?usp=sharing)
 
 [Github Repo](https://github.com/AhmedTurkiii/CST438-SWE-Project1)
+
+## 🛠 Tech Stack
+
+- **React Native** – Cross-platform mobile app development  
+- **Expo** – Streamlined React Native development and deployment  
+- **Node.js** – Backend runtime environment  
+- **REST APIs** – Standard web service communication  
+- **Mocha.js** – Testing framework for JavaScript/Node.js  
+- **Git** – Version control and collaboration  
+- **ESLint** – Linting for code consistency and quality  
+- **Tailwind CSS** – Utility-first CSS framework (with `tailwind-react-native-classnames` for RN)
 
 ## Overview
 
