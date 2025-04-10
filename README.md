@@ -11,14 +11,14 @@
 
 ## 🛠 Tech Stack
 
-- **React Native** – Cross-platform mobile app development  
-- **Expo** – Streamlined React Native development and deployment  
-- **Node.js** – Backend runtime environment  
-- **REST APIs** – Standard web service communication  
-- **Mocha.js** – Testing framework for JavaScript/Node.js  
-- **Git** – Version control and collaboration  
-- **ESLint** – Linting for code consistency and quality  
-- **Tailwind CSS** – Utility-first CSS framework (with `tailwind-react-native-classnames` for RN)
+- [**React Native**](https://reactnative.dev/) – Cross-platform mobile app development  
+- [**Expo**](https://expo.dev/) – Streamlined React Native development and deployment  
+- [**Node.js**](https://nodejs.org/) – Backend runtime environment  
+- [**REST APIs**](https://restfulapi.net/) – Standard web service communication  
+- [**Mocha.js**](https://mochajs.org/) – Testing framework for JavaScript/Node.js  
+- [**Git**](https://git-scm.com/) – Version control and collaboration  
+- [**ESLint**](https://eslint.org/) – Linting for code consistency and quality  
+- [**Tailwind CSS**](https://tailwindcss.com/) – Utility-first CSS framework
 
 ## Overview
 
