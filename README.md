@@ -1,4 +1,4 @@
-# Project Retrospective and overview <img src="assets/images/Designer-2.jpeg" alt="Logo" width="50"/>
+# Project Retrospective and overview <img src="assets/images/Designer-2.jpeg" alt="Logo" height="60" width="70"/>
 
 
 [Video Walkthrough](https://drive.google.com/file/d/1-0gD1-vVK_uTJQ4WHjX75x5OTj5rjwWV/view?usp=sharing)
