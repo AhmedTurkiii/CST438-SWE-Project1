@@ -1,4 +1,4 @@
-# Project 01 Retrospective and overview (Team 10)
+# Project Retrospective and overview [assets/images/Designer-2.jpeg]
 
 [Video Walkthrough](https://drive.google.com/file/d/1-0gD1-vVK_uTJQ4WHjX75x5OTj5rjwWV/view?usp=sharing)
 
