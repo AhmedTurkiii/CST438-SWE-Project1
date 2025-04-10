@@ -1,9 +1,8 @@
 <p align="center">
   <img src="assets/images/Designer-2.jpeg" alt="Logo" width="150"/>
 </p>
-# Project Retrospective and overview 
 
-<img src="assets/images/Designer-2.jpeg" alt="Logo" height="100" width="100"/>
+# Project Retrospective and overview 
 
 [Video Walkthrough](https://drive.google.com/file/d/1-0gD1-vVK_uTJQ4WHjX75x5OTj5rjwWV/view?usp=sharing)
 
