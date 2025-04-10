@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="assets/images/Designer-2.jpeg" alt="Logo" width="150"/>
+</p>
 # Project Retrospective and overview 
 
 <img src="assets/images/Designer-2.jpeg" alt="Logo" height="100" width="100"/>
